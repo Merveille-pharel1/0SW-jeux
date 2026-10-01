@@ -4,7 +4,7 @@ class Emitter {
   int lastParticleTime;
   ArrayList<Particle> particles;
   int maxParticles = 2000;
-  float reactionDistance = 300;
+  float reactionDistance = 100;
 
   Emitter(PVector l, int rate) {
     position = l.copy();
