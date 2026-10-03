@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://bpmx81mph5qto" path="res://assets/sprites/separateur_config.png" id="5_es4n0"]
 [ext_resource type="Texture2D" uid="uid://c2v0t1mqskw1w" path="res://assets/sprites/bouton_settings_normal.png" id="6_83j8s"]
 [ext_resource type="Texture2D" uid="uid://bccx7855lms31" path="res://assets/sprites/bouton_settings_hover.png" id="7_gjs24"]
+[ext_resource type="Texture2D" uid="uid://cg1j6vrditpx0" path="res://assets/icons/music.svg" id="9_1g033"]
+[ext_resource type="Texture2D" uid="uid://b5423fma3e8q" path="res://assets/icons/controller.svg" id="10_01roj"]
+[ext_resource type="Texture2D" uid="uid://bpch5q4fmbxku" path="res://assets/icons/difficulty.svg" id="11_wqwn7"]
+[ext_resource type="Texture2D" uid="uid://bk3fspy3tim6b" path="res://assets/icons/arrow_back.svg" id="12_oe2nd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slodc"]
 texture = ExtResource("2_f4mfi")
@@ -108,6 +112,21 @@ texture_hover = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="AudioIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" unique_id=584385433]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("9_1g033")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="AudioTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" unique_id=1909302396]
 layout_mode = 1
 anchors_preset = 8
@@ -139,6 +158,21 @@ texture_hover = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="ControlsIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" unique_id=253791028]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("10_01roj")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="ControlsTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" unique_id=1122148936]
 layout_mode = 1
 anchors_preset = 8
@@ -169,6 +203,21 @@ texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="DifficultyIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" unique_id=152376619]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_wqwn7")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" unique_id=1719277652]
 layout_mode = 1
@@ -235,6 +284,21 @@ texture_hover = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 metadata/_edit_group_ = true
+
+[node name="ReturnIcon" type="TextureRect" parent="ReturnButton" unique_id=1784355495]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("12_oe2nd")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="ReturnButton" unique_id=1175031193]
 layout_mode = 1
