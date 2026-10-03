@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="Chrysalis"
+run/main_scene="uid://84rgblgoxa65"
 config/features=PackedStringArray("4.7")
 config/icon="res://assets/icon.svg"

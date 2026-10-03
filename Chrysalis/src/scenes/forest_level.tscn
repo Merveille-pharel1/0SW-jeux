@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c0uqcwy5d5tlc"]
+
+[node name="ForestLevel" type="Node2D" unique_id=1480784661]
+
+[node name="Label" type="Label" parent="." unique_id=1313436635]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FOREST_LEVEL"

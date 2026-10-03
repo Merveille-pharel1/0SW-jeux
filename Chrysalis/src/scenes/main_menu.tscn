@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://84rgblgoxa65"]
+
+[ext_resource type="Script" uid="uid://dmbcljrsh4lpd" path="res://scripts/main_menu.gd" id="1_8ln24"]
+[ext_resource type="Texture2D" uid="uid://p0r72r1qcp8b" path="res://assets/sprites/main_menu_sans_boutons.png" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://bwvnbrimy7e6a" path="res://assets/sprites/button_normal.png" id="2_wu84c"]
+[ext_resource type="Texture2D" uid="uid://d3u6mqde3vtew" path="res://assets/sprites/button_hover.png" id="3_8ln24"]
+[ext_resource type="FontFile" uid="uid://cv1st1lyjb0oc" path="res://assets/fonts/Cinzel-Regular.ttf" id="4_wu84c"]
+[ext_resource type="PackedScene" uid="uid://dkl5mgmewlh7s" path="res://scenes/butter_fly.tscn" id="6_rtw2f"]
+
+[node name="MainMenu" type="Control" unique_id=845799772]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8ln24")
+
+[node name="Background" type="TextureRect" parent="." unique_id=68918313]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_bqqt6")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="UI" type="Control" parent="." unique_id=860313473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 75.0
+offset_right = 4.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuButtons" type="VBoxContainer" parent="UI" unique_id=1293098088]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521
+anchor_top = 0.282
+anchor_right = 0.859
+anchor_bottom = 0.75600004
+offset_left = -0.1920166
+offset_top = 0.2639923
+offset_right = 0.4319458
+offset_bottom = 0.111968994
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -31
+metadata/_edit_group_ = true
+
+[node name="PlayButton" type="TextureButton" parent="UI/MenuButtons" unique_id=2006032261]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_wu84c")
+texture_pressed = ExtResource("3_8ln24")
+texture_hover = ExtResource("3_8ln24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/MenuButtons/PlayButton" unique_id=2045671658]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.39000002
+anchor_right = 0.597
+anchor_bottom = 0.62
+offset_right = 0.16999817
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 20
+text = "JOUER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="UI/MenuButtons" unique_id=19335863]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_wu84c")
+texture_pressed = ExtResource("3_8ln24")
+texture_hover = ExtResource("3_8ln24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/MenuButtons/SettingsButton" unique_id=449404032]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.39000002
+anchor_right = 0.597
+anchor_bottom = 0.62
+offset_right = 0.16999817
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoButton" type="TextureButton" parent="UI/MenuButtons" unique_id=1894082076]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_wu84c")
+texture_pressed = ExtResource("3_8ln24")
+texture_hover = ExtResource("3_8ln24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/MenuButtons/InfoButton" unique_id=889221148]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.39000002
+anchor_right = 0.597
+anchor_bottom = 0.62
+offset_left = -41.0
+offset_top = -2.0
+offset_right = 50.17
+offset_bottom = 5.0
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 20
+text = "INFORMATIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="UI/MenuButtons" unique_id=1128900467]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_wu84c")
+texture_pressed = ExtResource("3_8ln24")
+texture_hover = ExtResource("3_8ln24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/MenuButtons/ExitButton" unique_id=1797979514]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.39000002
+anchor_right = 0.597
+anchor_bottom = 0.62
+offset_right = 0.16999817
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_wu84c")
+theme_override_font_sizes/font_size = 20
+text = "QUITTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButterFly" parent="." unique_id=44822535 instance=ExtResource("6_rtw2f")]
+position = Vector2(457, 92)
+
+[connection signal="mouse_entered" from="UI/MenuButtons/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MenuButtons/PlayButton" to="." method="_on_play_button_mouse_exited"]
+[connection signal="pressed" from="UI/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="UI/MenuButtons/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MenuButtons/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MenuButtons/InfoButton" to="." method="_on_info_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MenuButtons/InfoButton" to="." method="_on_info_button_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MenuButtons/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MenuButtons/ExitButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="UI/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
