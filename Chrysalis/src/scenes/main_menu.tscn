@@ -133,7 +133,7 @@ theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.560784
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("4_wu84c")
 theme_override_font_sizes/font_size = 20
-text = "INFORMATIONS"
+text = "INSTRUCTIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
