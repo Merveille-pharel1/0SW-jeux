@@ -98,7 +98,8 @@ anchor_left = 0.4
 anchor_top = 0.39000002
 anchor_right = 0.597
 anchor_bottom = 0.62
-offset_right = 0.16999817
+offset_right = 14.169998
+offset_bottom = 5.0
 theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
 theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
 theme_override_constants/outline_size = 2
@@ -171,6 +172,7 @@ position = Vector2(457, 92)
 [connection signal="pressed" from="UI/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="mouse_entered" from="UI/MenuButtons/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MenuButtons/SettingsButton" to="." method="_on_settings_button_mouse_exited"]
+[connection signal="pressed" from="UI/MenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="mouse_entered" from="UI/MenuButtons/InfoButton" to="." method="_on_info_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/MenuButtons/InfoButton" to="." method="_on_info_button_mouse_exited"]
 [connection signal="mouse_entered" from="UI/MenuButtons/ExitButton" to="." method="_on_exit_button_mouse_entered"]

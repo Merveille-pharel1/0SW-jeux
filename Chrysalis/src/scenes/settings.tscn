@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://ceb5scq2l8fsv"]
+
+[ext_resource type="Texture2D" uid="uid://by6axm4be46qu" path="res://assets/sprites/background_settings.png" id="1_6wm04"]
+[ext_resource type="Script" uid="uid://dwnrkchkx5l2h" path="res://scripts/settings.gd" id="1_gjs24"]
+[ext_resource type="Texture2D" uid="uid://bucob2nmk8w68" path="res://assets/sprites/cadre_config.png" id="2_f4mfi"]
+[ext_resource type="Texture2D" uid="uid://t7bbew2j0q7d" path="res://assets/sprites/cristal_config.png" id="3_es4n0"]
+[ext_resource type="FontFile" uid="uid://cv1st1lyjb0oc" path="res://assets/fonts/Cinzel-Regular.ttf" id="4_f4mfi"]
+[ext_resource type="Texture2D" uid="uid://bpmx81mph5qto" path="res://assets/sprites/separateur_config.png" id="5_es4n0"]
+[ext_resource type="Texture2D" uid="uid://c2v0t1mqskw1w" path="res://assets/sprites/bouton_settings_normal.png" id="6_83j8s"]
+[ext_resource type="Texture2D" uid="uid://bccx7855lms31" path="res://assets/sprites/bouton_settings_hover.png" id="7_gjs24"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slodc"]
+texture = ExtResource("2_f4mfi")
+texture_margin_left = 60.0
+texture_margin_top = 40.0
+texture_margin_right = 60.0
+texture_margin_bottom = 60.0
+
+[node name="SettingsMenu" type="Control" unique_id=372576646]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gjs24")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1552948866]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_6wm04")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=376377014]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=233517756]
+layout_mode = 2
+
+[node name="LeftPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=214969402]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_slodc")
+
+[node name="Adornment" type="Control" parent="MarginContainer/HBoxContainer/LeftPanel" unique_id=1944021406]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Crystal" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/Adornment" unique_id=1768136354]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = -110.0
+offset_right = 126.0
+offset_bottom = -30.0
+grow_horizontal = 2
+texture = ExtResource("3_es4n0")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftPanel" unique_id=1215993682]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer" unique_id=431043624]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SettingsTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=1305957938]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "CONFIGURATIONS"
+
+[node name="CrystalLine" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=892398367]
+layout_mode = 2
+texture = ExtResource("5_es4n0")
+
+[node name="AudioButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=600543075]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("6_83j8s")
+texture_pressed = ExtResource("7_gjs24")
+texture_hover = ExtResource("7_gjs24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="AudioTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" unique_id=1909302396]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -16.0
+offset_right = 39.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "AUDIO"
+
+[node name="ControlsButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=1960542543]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("6_83j8s")
+texture_pressed = ExtResource("7_gjs24")
+texture_hover = ExtResource("7_gjs24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ControlsTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" unique_id=1122148936]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -16.0
+offset_right = 70.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "CONTRÔLES"
+
+[node name="DifficultyButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=1371214322]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("6_83j8s")
+texture_pressed = ExtResource("7_gjs24")
+texture_hover = ExtResource("7_gjs24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" unique_id=1719277652]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -16.0
+offset_right = 65.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "DIFFICULTÉ"
+
+[node name="RightPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1494164759]
+custom_minimum_size = Vector2(600, 415)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_slodc")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/RightPanel" unique_id=1906877816]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer" unique_id=1656923479]
+layout_mode = 2
+
+[node name="SelectedTitle" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=1878459017]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "AUDIO"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=1177163277]
+layout_mode = 2
+texture = ExtResource("5_es4n0")
+
+[node name="ReturnButton" type="TextureButton" parent="." unique_id=1540372914]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -95.0
+offset_right = 262.0
+offset_bottom = -27.0
+grow_vertical = 0
+texture_normal = ExtResource("6_83j8s")
+texture_pressed = ExtResource("7_gjs24")
+texture_hover = ExtResource("7_gjs24")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="ReturnButton" unique_id=1175031193]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -16.0
+offset_right = 47.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "RETOUR"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" to="." method="_on_difficulty_button_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

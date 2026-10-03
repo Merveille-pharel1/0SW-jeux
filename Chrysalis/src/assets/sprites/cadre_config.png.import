@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://303cp2bytcmb"
-path="res://.godot/imported/button.png-01faf565b773239305f3664038f20e61.ctex"
+uid="uid://bucob2nmk8w68"
+path="res://.godot/imported/cadre_config.png-cf3296c452f324107bd1dd513871901c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/button.png"
-dest_files=["res://.godot/imported/button.png-01faf565b773239305f3664038f20e61.ctex"]
+source_file="res://assets/sprites/cadre_config.png"
+dest_files=["res://.godot/imported/cadre_config.png-cf3296c452f324107bd1dd513871901c.ctex"]
 
 [params]
 
