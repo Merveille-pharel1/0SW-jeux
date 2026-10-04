@@ -11,14 +11,51 @@
 [ext_resource type="Texture2D" uid="uid://cg1j6vrditpx0" path="res://assets/icons/music.svg" id="9_1g033"]
 [ext_resource type="Texture2D" uid="uid://b5423fma3e8q" path="res://assets/icons/controller.svg" id="10_01roj"]
 [ext_resource type="Texture2D" uid="uid://bpch5q4fmbxku" path="res://assets/icons/difficulty.svg" id="11_wqwn7"]
+[ext_resource type="Texture2D" uid="uid://dytjry7rkrtx7" path="res://assets/sprites/slider/slider_curseur.png" id="12_7kvyq"]
 [ext_resource type="Texture2D" uid="uid://bk3fspy3tim6b" path="res://assets/icons/arrow_back.svg" id="12_oe2nd"]
+[ext_resource type="Texture2D" uid="uid://dgp1fj53uymui" path="res://assets/sprites/slider/slider_piste.png" id="13_ql1j0"]
+[ext_resource type="Texture2D" uid="uid://bwrfos4qcfbd5" path="res://assets/sprites/slider/slider_remplissage.png" id="14_6dbjw"]
+[ext_resource type="Texture2D" uid="uid://b7aebe0t7kk4l" path="res://assets/icons/volume.svg" id="15_g5y2q"]
+[ext_resource type="Texture2D" uid="uid://dvub14h75y5o2" path="res://assets/icons/easy.svg" id="16_g5y2q"]
+[ext_resource type="Texture2D" uid="uid://dpmghwm4qvatq" path="res://assets/icons/normal.svg" id="17_k00b3"]
+[ext_resource type="Texture2D" uid="uid://33tstirjxct6" path="res://assets/icons/difficult.svg" id="18_aisiw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_slodc"]
 texture = ExtResource("2_f4mfi")
-texture_margin_left = 60.0
+texture_margin_left = 40.0
 texture_margin_top = 40.0
-texture_margin_right = 60.0
-texture_margin_bottom = 60.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_aisiw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm75t"]
+content_margin_left = 0.0
+content_margin_right = 70.0
+bg_color = Color(0.17254902, 0.20392157, 0.30980393, 0.21568628)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jabl8"]
+content_margin_left = 8.0
+content_margin_bottom = 15.0
+texture = ExtResource("13_ql1j0")
+texture_margin_left = 9.0
+texture_margin_right = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e0rcb"]
+content_margin_left = 8.0
+content_margin_bottom = 15.0
+texture = ExtResource("14_6dbjw")
+texture_margin_left = 9.0
+texture_margin_right = 9.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slodc"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.17254902, 0.20392157, 0.30980393, 0.21568628)
+border_color = Color(0.10980392, 0.21568628, 0.3529412, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_g5y2q"]
 
 [node name="SettingsMenu" type="Control" unique_id=372576646]
 layout_mode = 3
@@ -106,6 +143,7 @@ texture = ExtResource("5_es4n0")
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 toggle_mode = true
+button_group = SubResource("ButtonGroup_aisiw")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
@@ -152,6 +190,7 @@ text = "AUDIO"
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 toggle_mode = true
+button_group = SubResource("ButtonGroup_aisiw")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
@@ -198,6 +237,7 @@ text = "CONTRÔLES"
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 toggle_mode = true
+button_group = SubResource("ButtonGroup_aisiw")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
@@ -241,20 +281,20 @@ theme_override_font_sizes/font_size = 23
 text = "DIFFICULTÉ"
 
 [node name="RightPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1494164759]
-custom_minimum_size = Vector2(600, 415)
+custom_minimum_size = Vector2(674, 400)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_slodc")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/RightPanel" unique_id=1906877816]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer" unique_id=1656923479]
+[node name="SelectedSetting" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer" unique_id=1656923479]
 layout_mode = 2
 
-[node name="SelectedTitle" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=1878459017]
+[node name="SelectedTitle" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=1878459017]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
@@ -264,9 +304,255 @@ theme_override_fonts/font = ExtResource("4_f4mfi")
 theme_override_font_sizes/font_size = 23
 text = "AUDIO"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/VBoxContainer" unique_id=1177163277]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=1177163277]
 layout_mode = 2
 texture = ExtResource("5_es4n0")
+
+[node name="AudioContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=1374558027]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MusicContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer" unique_id=1540909692]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="MusicIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=1507599661]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_1g033")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=717331326]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_gm75t")
+text = "Musique"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=536118809]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("12_7kvyq")
+theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
+theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_e0rcb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_e0rcb")
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=383078861]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_slodc")
+text = "0 %"
+
+[node name="EffectContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer" unique_id=1289302737]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="EffectIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=801527497]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("15_g5y2q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=1536869378]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 21
+text = "Effets sonores"
+
+[node name="EffectSlider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=1541987907]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("12_7kvyq")
+theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
+theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_e0rcb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_e0rcb")
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=1363470624]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_slodc")
+text = "0 %"
+
+[node name="DifficultyContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=1600001833]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="EasyButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer" unique_id=611647803]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g5y2q")
+texture_normal = ExtResource("6_83j8s")
+texture_pressed = ExtResource("7_gjs24")
+texture_hover = ExtResource("7_gjs24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="EasyIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/EasyButton" unique_id=1079233172]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_g5y2q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/EasyButton" unique_id=638670234]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -16.0
+offset_right = 39.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "FACILE"
+
+[node name="NormalButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer" unique_id=1307465487]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_g5y2q")
+texture_normal = ExtResource("6_83j8s")
+texture_pressed = ExtResource("7_gjs24")
+texture_hover = ExtResource("7_gjs24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="NormalIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/NormalButton" unique_id=1464716866]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("17_k00b3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/NormalButton" unique_id=1637006773]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = -16.0
+offset_right = 49.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "Normal"
+
+[node name="DifficultButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer" unique_id=1709830194]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g5y2q")
+texture_normal = ExtResource("6_83j8s")
+texture_pressed = ExtResource("7_gjs24")
+texture_hover = ExtResource("7_gjs24")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DifficultIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/DifficultButton" unique_id=1092118314]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -20.0
+offset_right = 80.0
+offset_bottom = 20.0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("18_aisiw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/DifficultButton" unique_id=1855737067]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = -16.0
+offset_right = 53.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 23
+text = "Difficile"
+
+[node name="ControlsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=794280903]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/ControlsContainer" unique_id=2049850345]
+layout_mode = 2
+text = "Bonjour"
 
 [node name="ReturnButton" type="TextureButton" parent="." unique_id=1540372914]
 layout_mode = 1
@@ -324,4 +610,9 @@ text = "RETOUR"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" to="." method="_on_difficulty_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer/EffectSlider" to="." method="_on_effect_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/EasyButton" to="." method="_on_easy_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/NormalButton" to="." method="_on_normal_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/DifficultButton" to="." method="_on_difficult_button_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
