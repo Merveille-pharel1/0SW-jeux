@@ -1,0 +1,233 @@
+[gd_scene format=3 uid="uid://bqh3urv6c4kv8"]
+
+[ext_resource type="Script" uid="uid://bgnjp1yw3vv1e" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://b20rvs760adeg" path="res://assets/sprites/player/player.png" id="2_qlg0r"]
+[ext_resource type="Script" uid="uid://jn1jr0r4yp5j" path="res://scripts/state_machine.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://cfw658rw4bc7b" path="res://scripts/playerStates/player_idle.gd" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://btl014d8rfxfb" path="res://scripts/playerStates/player_run.gd" id="5_tuyoq"]
+[ext_resource type="Script" uid="uid://f8xnl3ngqo0h" path="res://scripts/playerStates/player_jump.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://chi7o3b45b486" path="res://scripts/playerStates/player_fall.gd" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://16tpthx352hk" path="res://scripts/playerStates/player_attack.gd" id="8_ur7pv"]
+[ext_resource type="Script" uid="uid://mvekywq4wult" path="res://scripts/playerStates/player_dashAttack.gd" id="9_y4r1p"]
+[ext_resource type="Script" uid="uid://dn33dgbwyjpgw" path="res://scripts/playerStates/player_fly.gd" id="10_y4r1p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hi74"]
+radius = 31.0
+height = 104.0
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "Attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.19999999, 0.26666668, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [42, 43, 44, 45, 46, 47]
+}
+
+[sub_resource type="Animation" id="Animation_fjrip"]
+resource_name = "DashAttack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [49, 50, 51, 52]
+}
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "Fall"
+length = 0.47
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24, 25, 26, 27]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "FlyIdle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_y4r1p"]
+resource_name = "FlyMove"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [35, 36, 37, 38, 39, 40]
+}
+
+[sub_resource type="Animation" id="Animation_g2els"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_d2wvv"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "Run"
+length = 0.94
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336, 0.6666667, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"Attack": SubResource("Animation_tuyoq"),
+&"DashAttack": SubResource("Animation_fjrip"),
+&"Fall": SubResource("Animation_smehm"),
+&"FlyIdle": SubResource("Animation_ur7pv"),
+&"FlyMove": SubResource("Animation_y4r1p"),
+&"Idle": SubResource("Animation_g2els"),
+&"Jump": SubResource("Animation_d2wvv"),
+&"RESET": SubResource("Animation_dqkch"),
+&"Run": SubResource("Animation_qlg0r")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=1626296191]
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753022948]
+position = Vector2(14, -2)
+shape = SubResource("CapsuleShape2D_2hi74")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1940092519]
+position = Vector2(0, -1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_qlg0r")
+hframes = 7
+vframes = 8
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=310009645]
+libraries/ = SubResource("AnimationLibrary_tuyoq")
+autoplay = &"Run"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1325089386]
+position_smoothing_enabled = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=1736407253 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_qhqgy")
+initial_state = NodePath("PlayerIdle")
+
+[node name="PlayerIdle" type="Node" parent="StateMachine" unique_id=1366236353 node_paths=PackedStringArray("player")]
+script = ExtResource("4_qlg0r")
+player = NodePath("../..")
+
+[node name="PlayerRun" type="Node" parent="StateMachine" unique_id=1425007339 node_paths=PackedStringArray("player")]
+script = ExtResource("5_tuyoq")
+player = NodePath("../..")
+move_speed = 500.0
+
+[node name="PlayerJump" type="Node" parent="StateMachine" unique_id=600290920 node_paths=PackedStringArray("player")]
+script = ExtResource("6_tuyoq")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://f8xnl3ngqo0h"
+
+[node name="PlayerFall" type="Node" parent="StateMachine" unique_id=947679401 node_paths=PackedStringArray("player")]
+script = ExtResource("7_fjrip")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://chi7o3b45b486"
+
+[node name="PlayerAttack" type="Node" parent="StateMachine" unique_id=3906432 node_paths=PackedStringArray("player")]
+script = ExtResource("8_ur7pv")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://16tpthx352hk"
+
+[node name="PlayerDashAttack" type="Node" parent="StateMachine" unique_id=1782110452 node_paths=PackedStringArray("player")]
+script = ExtResource("9_y4r1p")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://mvekywq4wult"
+
+[node name="PlayerFly" type="Node" parent="StateMachine" unique_id=840280991 node_paths=PackedStringArray("player")]
+script = ExtResource("10_y4r1p")
+player = NodePath("../..")
+time_out_delay = 4
+metadata/_custom_type_script = "uid://dn33dgbwyjpgw"

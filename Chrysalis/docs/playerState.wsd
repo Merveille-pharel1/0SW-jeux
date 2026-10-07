@@ -1,0 +1,43 @@
+@startuml
+
+state Run
+state Fall
+state Idle
+state Jump
+state Fly{
+    state FlyIdle
+    state FlyMove
+
+    [*] -> FlyIdle
+    FlyIdle --> FlyMove : velovity.x == 0
+    FlyMove --> FlyIdle : velovity.x != 0
+}
+state Attack
+state DashAttack
+
+[*] -> Idle
+Run --> Jump : Jump Pressed && IsOnFloor
+Run --> Idle : Velocity.x == 0
+Run --> Fall : !IsOnFloor && velocity.y > 0
+Run --> Fly : Fly Pressed
+Run --> Attack : Attack Pressed
+Run --> DashAttack : Dash Pressed
+Idle --> Jump : Jump Pressed && IsOnFloor
+Idle --> Run : velocity.x !=0
+Idle --> Fall : !IsOnFloor && velocity.y > 0
+Idle --> Fly : Fly Pressed
+Idle --> Attack : Attack Pressed
+Idle --> DashAttack : Dash Pressed
+Jump --> Fall : Velocity.y > 0
+Jump --> Fly : Fly Pressed
+Jump --> Attack : Attack Pressed
+Jump --> DashAttack : Dash Pressed
+Fall --> Idle : IsOnFloor
+Fly --> Fall : TimeOutDelay || Fly Pressed || Jump Pressed
+Fly --> DashAttack : Dash Pressed
+DashAttack --> Idle : TimeOutDelay
+' Attack --> PrecedentState : TimeOutDelay
+
+
+
+@enduml
