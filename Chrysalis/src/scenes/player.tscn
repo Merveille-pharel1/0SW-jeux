@@ -174,10 +174,6 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=1626296191]
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753022948]
-position = Vector2(14, -2)
-shape = SubResource("CapsuleShape2D_2hi74")
-
 [node name="Icon" type="Sprite2D" parent="." unique_id=1940092519]
 position = Vector2(0, -1)
 scale = Vector2(0.6, 0.6)
@@ -185,6 +181,10 @@ texture = ExtResource("2_qlg0r")
 hframes = 7
 vframes = 8
 frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753022948]
+position = Vector2(14, -2)
+shape = SubResource("CapsuleShape2D_2hi74")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=310009645]
 libraries/ = SubResource("AnimationLibrary_tuyoq")
@@ -229,5 +229,6 @@ metadata/_custom_type_script = "uid://mvekywq4wult"
 [node name="PlayerFly" type="Node" parent="StateMachine" unique_id=840280991 node_paths=PackedStringArray("player")]
 script = ExtResource("10_y4r1p")
 player = NodePath("../..")
+fly_speed = 600.0
 time_out_delay = 4
 metadata/_custom_type_script = "uid://dn33dgbwyjpgw"
