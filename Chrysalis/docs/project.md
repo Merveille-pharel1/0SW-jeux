@@ -1,23 +1,23 @@
 # Projet - CHRYSALIS
 
 ## Histoire
-Dans un monde où la science repousse les limites de la nature, une organisation secrète développe **_Lepidos_**, un produit expérimental capable de fusionner l'ADN humain avec celui des insectes.
+Dans un monde où la science repousse les limites du naturel, une organisation secrète développe un produit appelé **_Lepidos_**, capable de fusionner l'ADN humain avec celui des insectes.
 
-**_Son objectif_** : créer une nouvelle forme d'humanité.
+**_Son objectif_** : améliorer les capacités physiques de l'humanité.
 
-Mais les expériences échappent rapidement à tout contrôle. Les sujets se transforment en créatures instables. Certains perdent leur conscience, tandis que d'autres deviennent des êtres que la science ne peut plus maîtriser.
+Mais les expériences échappent rapidement à tout contrôle. Les sujets se transforment en créatures instables. Certains perdent leur conscience et d'autres deviennent des êtres incontrôlables.
 
-**_Noé_**, un étudiant de 21 ans, voit sa vie basculer lorsqu'un accident l'expose au Lepidos. Son corps subit une transformation inexplicable. Des ailes apparaissent, ses sens s'aiguisent et des pouvoirs inconnus s'éveillent en lui.
+**_Noé_**, le protagoniste, voit sa vie basculer lorsqu'un accident l'expose au Lepidos. Son corps subit une transformation inexplicable. Des ailes apparaissent, ses sens s'aiguisent et des pouvoirs inconnus s'éveillent en lui.
 
 Désormais rejeté par ses proches, terrifiés par sa nouvelle apparence, et traqué par ceux qui ont créé le produit, Noé se retrouve seul face à une existence qu'il n'a jamais choisie.
 
-Piégé dans un complexe scientifique abandonné, Noé devra apprendre à maîtriser sa nouvelle nature, découvrir la vérité sur Lepidos et trouver un moyen de redevenir humain.
+Abandonné à lui-même, Noé devra apprendre à maîtriser sa nouvelle nature, découvrir la vérité sur Lepidos et trouver un moyen de redevenir humain.
 
 Mais au fil de son exploration, une question le hante : **et si cette transformation n'était pas une malédiction, mais le début d'une nouvelle évolution ?**  
 
 ## Présentation du jeu
 
-**_CHRYSALIS_** est un jeu d'action-aventure 2D de type Metroidvania, dans lequel le joueur incarne Noé, un jeune homme contraint de survivre dans un monde où les frontières entre l'humain et l'insecte ont été bouleversées.
+**_CHRYSALIS_** est un jeu d'action-aventure 2D de plateforme, dans lequel le joueur incarne Noé, un jeune homme contraint de survivre dans un monde où les frontières entre l'humain et l'insecte ont été bouleversées.
 
 L'exploration, les combats et l'acquisition de nouvelles mutations constituent le cœur de l'expérience. Chaque capacité obtenue permet de surmonter de nouveaux obstacles, d'accéder à des zones auparavant inaccessibles et de découvrir progressivement les secrets du projet Lepidos.
 
@@ -130,7 +130,7 @@ Après avoir exploré complètement le laboratoire, Noé trouve une **carte indi
 
 Cependant, avant que Noé puisse utiliser l'échantillon pour rechercher un remède, un infecté mystérieux fait son apparition. Il s'agit de **Kael**, un hybride ayant réussi à contrôler sa transformation.
 
-Kael cherche à récupérer le Lepidos afin de pouvoir reproduire le produit et l'utiliser pour transformer l'humanité entière.
+Kael cherche à récupérer le Lepidos afin de pouvoir reproduire le produit et l'utiliser pour transformer l'humanité.
 
 Un combat éclate entre Noé et Kael. Malgré ses progrès, Noé est vaincu. Kael récupère alors le dernier échantillon de Lepidos et disparaît.
 
