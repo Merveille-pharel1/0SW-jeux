@@ -2,16 +2,19 @@ extends VBoxContainer
 
 @onready var actionsControl: VBoxContainer = $ScrollContainer/MarginContainer/ActionsControl
 
+const INPUT_CONFIG_PATH = "user://controls.cfg"
 var modeControl := "keyboard"
 var action_to_rebind: StringName = &""
 var old_event: InputEvent = null
 var current_button: Button = null
 var waiting_for_input := false
 var controls : Array
+var buttons_group : ButtonGroup
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	load_controls()
 	controls = getControls()
 	showControls(controls, modeControl)
 
@@ -27,7 +30,7 @@ func _input(event: InputEvent) -> void:
 	if modeControl == "keyboard" and not keyboardFilter(event):
 		return
 
-	if modeControl == "gamepad" and gamepadFilter(event):
+	if modeControl == "gamepad" and not gamepadFilter(event):
 		return
 
 	if not is_valid_input(event):
@@ -39,14 +42,25 @@ func _input(event: InputEvent) -> void:
 		new_event.keycode = 0
 		new_event.physical_keycode = event.physical_keycode
 
-	InputMap.action_erase_event(action_to_rebind, old_event)
+	if old_event != null:
+		InputMap.action_erase_event(action_to_rebind, old_event)
+	
 	InputMap.action_add_event(action_to_rebind, new_event)
 
+	print(new_event)
+	print(new_event.as_text())
+	print(current_button)
 	current_button.text = new_event.as_text()
 	current_button.set_meta("input_event", new_event)
 
+	save_controls()
+
+	current_button.button_pressed = false
 	waiting_for_input = false
 	get_viewport().set_input_as_handled()
+
+	for button in buttons_group.get_buttons():
+		button.disabled = false
 
 func getControls() -> Array:
 	var results := []
@@ -66,6 +80,8 @@ func getControls() -> Array:
 	return results
 
 func showControls(arrayControls: Array, type: String) -> void:
+
+	buttons_group = ButtonGroup.new() 
 
 	for control in arrayControls:
 		var action = control.keys()[0]
@@ -108,22 +124,58 @@ func showControls(arrayControls: Array, type: String) -> void:
 		actionsControl.add_child(separator)
 
 
-func createButton(action: String, event: InputEvent) -> Button:
-	var button = Button.new()
 
-	button.text = event.as_text() if event != null else "[vide]"
-	button.set_meta("input_event", event)
-	
-	styleInputButton(button)
+func start_rebinding(action: StringName, button: Button):
 
-	button.pressed.connect(start_rebinding.bind(action, button))
-	return button
+	if waiting_for_input:
+		return
+
+	for other_button in buttons_group.get_buttons():
+		other_button.disabled = other_button != button
+
+	action_to_rebind = action
+	old_event = button.get_meta("input_event") if button.has_meta("input_event") else null
+	current_button = button
+	waiting_for_input = true
+
+	button.text = "Appuyez une touche..."
+
+func _on_keyboard_button_pressed() -> void:
+	modeControl = "keyboard"	
+	reinitialize()
+	showControls(controls, modeControl)
+
+
+func _on_game_pad_button_pressed() -> void:
+	modeControl = "gamepad"	
+	reinitialize()
+	showControls(controls, modeControl)
+
+
+#region Helpers
 
 func keyboardFilter(event: InputEvent) -> bool:
 	return event is InputEventKey or event is InputEventMouseButton
 
 func gamepadFilter(event: InputEvent) -> bool:
 	return event is InputEventJoypadButton or event is InputEventJoypadMotion
+
+func createButton(action: String, event: InputEvent) -> Button:
+	var button = Button.new()
+
+	button.toggle_mode = true
+	button.button_group = buttons_group
+
+	button.text = event.as_text() if event != null else "[vide]"
+	
+	if event != null:
+		button.set_meta("input_event", event)
+	
+	styleInputButton(button)
+
+	button.pressed.connect(start_rebinding.bind(action, button))
+	return button
+
 
 func styleInputButton(button: Button) -> void:
 	var normal = StyleBoxFlat.new()
@@ -145,15 +197,15 @@ func styleInputButton(button: Button) -> void:
 	pressed.border_color = Color("#7CE5D3")
 	pressed.set_border_width_all(2)
 
-	# var disabled = normal.duplicate()
-	# disabled.bg_color = Color("#202A30")
-	# disabled.border_color = Color("#36434A")
+	var disabled = normal.duplicate()
+	disabled.bg_color = Color("#202A30")
+	disabled.border_color = Color("#36434A")
 
 	button.add_theme_stylebox_override("normal", normal)
 	button.add_theme_stylebox_override("hover", hover)
 	button.add_theme_stylebox_override("pressed", pressed)
 	button.add_theme_stylebox_override("hover_pressed", pressed)
-	# button.add_theme_stylebox_override("disabled", disabled)
+	button.add_theme_stylebox_override("disabled", disabled)
 
 	button.add_theme_color_override("font_color", Color("#DCE8EB"))
 	button.add_theme_color_override("font_hover_color", Color.WHITE)
@@ -163,14 +215,6 @@ func styleInputButton(button: Button) -> void:
 
 	button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
 
-
-func start_rebinding(action: StringName, button: Button):
-	action_to_rebind = action
-	old_event = button.get_meta("input_event")
-	current_button = button
-	waiting_for_input = true
-
-	button.text = "Appuyez une touche..."
 
 func is_valid_input(event: InputEvent) -> bool:
 	if event is InputEventKey:
@@ -190,13 +234,46 @@ func clearAllControls() -> void:
 		child.queue_free()
 
 
-func _on_keyboard_button_pressed() -> void:
-	modeControl = "keyboard"	
+func reinitialize() -> void:
 	clearAllControls()
-	showControls(controls, modeControl)
+	action_to_rebind= &""
+	old_event = null
+	current_button = null
+	waiting_for_input = false
 
+#endregion
 
-func _on_game_pad_button_pressed() -> void:
-	modeControl = "gamepad"	
-	clearAllControls()
-	showControls(controls, modeControl)
+#region Config
+
+func save_controls() -> void:
+	var config = ConfigFile.new()
+
+	for action in InputMap.get_actions():
+		if action.begins_with("ui_"):
+			continue
+
+		var events = InputMap.action_get_events(action)
+		config.set_value("controls", action, events)
+	
+	var error = config.save(INPUT_CONFIG_PATH)
+
+	if error != OK:
+		push_error("Erreur lors de la sauvegarde des contrôles")
+
+func load_controls() -> void:
+	var config = ConfigFile.new()
+
+	if config.load(INPUT_CONFIG_PATH) != OK:
+		return
+
+	for action in config.get_section_keys("controls"):
+		if not InputMap.has_action(action):
+			continue
+
+		InputMap.action_erase_events(action)
+
+		var events = config.get_value("controls", action)
+
+		for event in events:
+			InputMap.action_add_event(action, event)
+#endregion
