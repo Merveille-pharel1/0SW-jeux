@@ -18,6 +18,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+func _on_return_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+#region SelectedSettingsSignals 
+
 func _on_audio_button_pressed() -> void:
 	toggle_selected("AUDIO")
 
@@ -49,8 +54,9 @@ func offSettingsVisibility() -> void:
 	selectedSettingContainer.get_node("DifficultyContainer").visible = false
 	selectedSettingContainer.get_node("ControlsContainer").visible = false
 
-func _on_return_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+#endregion
+
+#region AudiosSetting
 
 func _on_effect_slider_value_changed(value: float) -> void:
 	var effectContainer = audioContainer.get_node("EffectContainer")
@@ -64,6 +70,10 @@ func _on_music_slider_value_changed(value: float) -> void:
 	musicContainer.get_node("Value").text = str(musicValue) + " %"
 	music_value = musicValue
 
+#endregion
+
+#region DifficultySetting
+
 func _on_easy_button_pressed() -> void:
 	game_difficulty = "Easy"
 	
@@ -72,3 +82,5 @@ func _on_normal_button_pressed() -> void:
 
 func _on_difficult_button_pressed() -> void:
 	game_difficulty = "Difficult"
+
+#endregion
