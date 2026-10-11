@@ -1,6 +1,8 @@
 extends VBoxContainer
 
 @onready var actionsControl: VBoxContainer = $ScrollContainer/MarginContainer/ActionsControl
+@onready var keyboardButtun: Button = $ModeControls/KeyboardButton
+@onready var gamepadButtun: Button = $ModeControls/GamePadButton
 
 const INPUT_CONFIG_PATH = "user://controls.cfg"
 var modeControl := "keyboard"
@@ -18,10 +20,15 @@ func _ready() -> void:
 	controls = getControls()
 	showControls(controls, modeControl)
 
+	update_font_weight(keyboardButtun)
+	keyboardButtun.toggled.connect(func(_pressed): update_font_weight(keyboardButtun))
+	gamepadButtun.toggled.connect(func(_pressed): update_font_weight(gamepadButtun))
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
+
 
 func _input(event: InputEvent) -> void:
 	if not waiting_for_input:
@@ -141,7 +148,7 @@ func start_rebinding(action: StringName, button: Button):
 	button.text = "Appuyez une touche..."
 
 func _on_keyboard_button_pressed() -> void:
-	modeControl = "keyboard"	
+	modeControl = "keyboard"
 	reinitialize()
 	showControls(controls, modeControl)
 
@@ -240,6 +247,13 @@ func reinitialize() -> void:
 	old_event = null
 	current_button = null
 	waiting_for_input = false
+
+
+func update_font_weight(button: Button) -> void:
+	var font = button.get_theme_font("font")
+
+	font.variation_embolden = 0.8 if button.button_pressed else 0.0
+	button.add_theme_font_override("font", font)
 
 #endregion
 

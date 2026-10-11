@@ -63,6 +63,9 @@ border_color = Color(0.10980392, 0.21568628, 0.3529412, 1)
 [sub_resource type="Theme" id="Theme_f1e71"]
 default_font = ExtResource("4_f4mfi")
 
+[sub_resource type="FontVariation" id="FontVariation_f1e71"]
+base_font = ExtResource("4_f4mfi")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcetw"]
 content_margin_left = 10.0
 content_margin_top = 5.0
@@ -96,6 +99,9 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_q4e06"]
+
+[sub_resource type="FontVariation" id="FontVariation_gcetw"]
+base_font = ExtResource("4_f4mfi")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i24gk"]
 content_margin_left = 10.0
@@ -626,6 +632,7 @@ theme_override_constants/separation = 50
 [node name="KeyboardButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/ControlsContainer/ModeControls" unique_id=1411470544]
 layout_mode = 2
 theme = SubResource("Theme_f1e71")
+theme_override_fonts/font = SubResource("FontVariation_f1e71")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gcetw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_aisiw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_f1e71")
@@ -637,7 +644,7 @@ icon = ExtResource("19_k00b3")
 
 [node name="GamePadButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/ControlsContainer/ModeControls" unique_id=1916516551]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_fonts/font = SubResource("FontVariation_gcetw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gcetw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i24gk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_3gwh8")
