@@ -34,7 +34,10 @@ func _input(event: InputEvent) -> void:
 		return
 
 	var new_event : InputEvent = event.duplicate()
-	new_event.physical_keycode = event.physical_keycode
+	
+	if new_event is InputEventKey:
+		new_event.keycode = 0
+		new_event.physical_keycode = event.physical_keycode
 
 	InputMap.action_erase_event(action_to_rebind, old_event)
 	InputMap.action_add_event(action_to_rebind, new_event)
@@ -63,7 +66,6 @@ func getControls() -> Array:
 	return results
 
 func showControls(arrayControls: Array, type: String) -> void:
-	# var actionsControl = get_node("ScrollContainer/MarginContainer/ActionsControl")
 
 	for control in arrayControls:
 		var action = control.keys()[0]
@@ -81,16 +83,12 @@ func showControls(arrayControls: Array, type: String) -> void:
 		eventsContainer.size_flags_horizontal = Control.SIZE_SHRINK_END
 		eventsContainer.add_theme_constant_override("separation", 10)
 		
+		if events.is_empty():
+			var button := createButton(action, null)
+			eventsContainer.add_child(button)
+
 		for e in events:
-			var button = Button.new()
-
-			button.text = e.as_text()
-			button.set_meta("input_event", e)
-			
-			styleInputButton(button)
-
-			button.pressed.connect(start_rebinding.bind(action, button))
-
+			var button := createButton(action, e)
 			eventsContainer.add_child(button)
 		
 		controlContainer.add_child(eventsContainer)
@@ -109,6 +107,17 @@ func showControls(arrayControls: Array, type: String) -> void:
 		actionsControl.add_child(controlContainer)
 		actionsControl.add_child(separator)
 
+
+func createButton(action: String, event: InputEvent) -> Button:
+	var button = Button.new()
+
+	button.text = event.as_text() if event != null else "[vide]"
+	button.set_meta("input_event", event)
+	
+	styleInputButton(button)
+
+	button.pressed.connect(start_rebinding.bind(action, button))
+	return button
 
 func keyboardFilter(event: InputEvent) -> bool:
 	return event is InputEventKey or event is InputEventMouseButton
@@ -175,13 +184,19 @@ func is_valid_input(event: InputEvent) -> bool:
 
 	return false
 
+func clearAllControls() -> void:
+	for child in actionsControl.get_children():
+		actionsControl.remove_child(child)
+		child.queue_free()
+
 
 func _on_keyboard_button_pressed() -> void:
 	modeControl = "keyboard"	
+	clearAllControls()
 	showControls(controls, modeControl)
-
 
 
 func _on_game_pad_button_pressed() -> void:
 	modeControl = "gamepad"	
+	clearAllControls()
 	showControls(controls, modeControl)
