@@ -230,5 +230,4 @@ metadata/_custom_type_script = "uid://mvekywq4wult"
 script = ExtResource("10_y4r1p")
 player = NodePath("../..")
 fly_speed = 600.0
-time_out_delay = 4
 metadata/_custom_type_script = "uid://dn33dgbwyjpgw"
