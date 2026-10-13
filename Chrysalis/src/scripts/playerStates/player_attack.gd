@@ -27,9 +27,20 @@ func physics_update(delta: float) -> void:
 
 	elapsedTime += delta
 
-	if elapsedTime > time_out_delay:
-		Transitioned.emit(self, "PlayerIdle")
+	var previous_state = player._state_machine.previous_state
+	if previous_state.name == "PlayerFly":
+		previous_state.elapsedTime += delta
 
+	if elapsedTime > time_out_delay:
+
+
+		if previous_state.name == "PlayerJump":
+			Transitioned.emit(self, "PlayerFall")
+		elif previous_state.name == "PlayerFly":
+			previous_state.current_state = previous_state.State.FLYING_IDLE
+			Transitioned.emit(self, "PlayerFly")
+		else:
+			Transitioned.emit(self, "PlayerIdle")
 
 	anim_player.play("Attack")
 

@@ -2,6 +2,7 @@ extends Node
 
 @export var initial_state : BaseState
 var current_state : BaseState
+var previous_state : BaseState
 var states : Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +16,7 @@ func _ready() -> void:
 	if initial_state :
 		initial_state.enter()
 		current_state = initial_state
+		previous_state = initial_state
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +35,8 @@ func on_child_transition(state, new_state_name):
 
 	if current_state:
 		current_state.exit()
-
-	new_state.enter()
+		
+	previous_state = current_state
 	current_state = new_state
+	new_state.enter()
+	
