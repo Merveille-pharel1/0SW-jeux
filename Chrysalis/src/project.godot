@@ -15,6 +15,10 @@ run/main_scene="uid://84rgblgoxa65"
 config/features=PackedStringArray("4.7")
 config/icon="res://assets/icon.svg"
 
+[global_group]
+
+player=""
+
 [input]
 
 move_right={
@@ -80,6 +84,16 @@ dash_attack={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(199, 19),"global_position":Vector2(211, 79),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="PlayerBody"
+2d_physics/layer_3="EnemyBody"
+2d_physics/layer_4="PlayerHitbox"
+2d_physics/layer_5="EnemyHitbox"
+2d_physics/layer_6="PlayerHurtbox"
+2d_physics/layer_7="EnemyHurtbox"
 
 [rendering]
 

@@ -4,6 +4,7 @@ extends BaseState
 @export var player : Player
 @export var time_out_delay := 0.4
 @export var dash_speed := 600.0
+@export var attack_damage: int = 30
 
 var anim_player : AnimationPlayer
 var elapsedTime : float = 0.0
@@ -11,6 +12,8 @@ var elapsedTime : float = 0.0
 func enter():
 	anim_player = player.get_animation_player()
 	elapsedTime = 0
+
+	player.hitbox.start_attack(attack_damage)
 
 
 func _input(event: InputEvent) -> void:
@@ -46,11 +49,6 @@ func physics_update(delta: float) -> void:
 			else:
 				Transitioned.emit(self, "PlayerIdle")
 
-		# if player.is_on_floor() and is_zero_approx(player.velocity.x):
-		# 	Transitioned.emit(self, "PlayerIdle")
-
-		# else:
-		# 	Transitioned.emit(self, "PlayerFall")
 	else:
 		player.velocity.x = dir * dash_speed
 		anim_player.play("DashAttack")

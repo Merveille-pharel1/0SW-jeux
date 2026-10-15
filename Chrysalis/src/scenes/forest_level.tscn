@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c0uqcwy5d5tlc"]
 
 [ext_resource type="PackedScene" uid="uid://bqh3urv6c4kv8" path="res://scenes/player.tscn" id="1_3dmh2"]
+[ext_resource type="PackedScene" uid="uid://cv3bu2oh4pxq4" path="res://scenes/ant_ennemy.tscn" id="2_tpi6n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
 size = Vector2(493, 49)
@@ -21,7 +22,11 @@ position = Vector2(714, 221)
 shape = SubResource("RectangleShape2D_jckq6")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1244531536]
-position = Vector2(1244, 104)
+position = Vector2(1206, 221)
+shape = SubResource("RectangleShape2D_jckq6")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1467945979]
+position = Vector2(1697, 221)
 shape = SubResource("RectangleShape2D_jckq6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=971175139]
@@ -34,3 +39,6 @@ shape = SubResource("RectangleShape2D_71xte")
 
 [node name="Player" parent="." unique_id=1626296191 instance=ExtResource("1_3dmh2")]
 position = Vector2(38, -81)
+
+[node name="AntEnnemy" parent="." unique_id=1928453538 instance=ExtResource("2_tpi6n")]
+position = Vector2(513, 131)

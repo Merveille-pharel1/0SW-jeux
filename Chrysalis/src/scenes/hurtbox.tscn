@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dlhx7v8p5skdf"]
+
+[ext_resource type="Script" uid="uid://yc5vahso5u64" path="res://scripts/hurtbox.gd" id="1_ksusc"]
+
+[node name="Hurtbox" type="Area2D" unique_id=339930457]
+script = ExtResource("1_ksusc")
