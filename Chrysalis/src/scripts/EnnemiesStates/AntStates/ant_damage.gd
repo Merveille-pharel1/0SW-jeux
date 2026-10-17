@@ -9,8 +9,6 @@ func enter():
 	ennemy.health = max(ennemy.health - ennemy.pending_damage, 0)
 	ennemy.pending_damage = 0
 
-	print("EH: ", ennemy.health)
-
 	if ennemy.health <= 0:
 		Transitioned.emit(self, "EnnemyDeath")
 		return
@@ -19,9 +17,10 @@ func enter():
 
 	if not ennemy._player_detector.is_colliding():
 		ennemy.change_direction()
+
+	await anim_ennemy.animation_finished
 	
 	Transitioned.emit(self, "EnnemyVigilance")
-
 
 func _input(event: InputEvent) -> void:
 	pass

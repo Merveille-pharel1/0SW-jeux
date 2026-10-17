@@ -37,5 +37,8 @@ func physics_update(delta: float) -> void:
 
 	anim_player.play("Idle")
 
+	if not player.is_on_floor():
+		Transitioned.emit(self, "PlayerFall")
+
 func exit() -> void:
 	pass

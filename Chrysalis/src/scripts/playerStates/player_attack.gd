@@ -2,12 +2,13 @@ class_name PlayerAttack
 extends BaseState
 
 @export var player : Player
-@export var time_out_delay := 0.4
 @export var attack_damage: int = 25
+@export var respawn_delay: float = 0.3
 
 
 var anim_player : AnimationPlayer
 var elapsedTime : float = 0.0
+var previous_state: BaseState
 
 func enter():
 	anim_player = player.get_animation_player()
@@ -16,6 +17,9 @@ func enter():
 
 	player.hitbox.start_attack(attack_damage)
 	anim_player.play("Attack")
+
+	if not anim_player.animation_finished.is_connected(_on_animation_finished):
+		anim_player.animation_finished.connect(_on_animation_finished)
 
 
 func _input(event: InputEvent) -> void:
@@ -31,21 +35,26 @@ func physics_update(delta: float) -> void:
 
 	elapsedTime += delta
 
-	var previous_state = player._state_machine.previous_state
+	previous_state = player._state_machine.previous_state
 	if previous_state.name == "PlayerFly":
 		previous_state.elapsedTime += delta
 
-	if elapsedTime > time_out_delay:
 
+func _on_animation_finished(_anim_name: StringName) -> void:
+	await get_tree().create_timer(respawn_delay).timeout
 
-		if previous_state.name == "PlayerJump":
-			Transitioned.emit(self, "PlayerFall")
-		elif previous_state.name == "PlayerFly":
-			previous_state.current_state = previous_state.State.FLYING_IDLE
-			Transitioned.emit(self, "PlayerFly")
-		else:
-			Transitioned.emit(self, "PlayerIdle")
+	if previous_state.name == "PlayerJump":
+		Transitioned.emit(self, "PlayerFall")
+	elif previous_state.name == "PlayerFly":
+		previous_state.current_state = previous_state.State.FLYING_IDLE
+		Transitioned.emit(self, "PlayerFly")
+	else:
+		Transitioned.emit(self, "PlayerIdle")
 
 func exit() -> void:
 	player.velocity.x = 0
 	player.hitbox.stop_attack()
+
+	if anim_player.animation_finished.is_connected(_on_animation_finished):
+		anim_player.animation_finished.disconnect(_on_animation_finished)
+

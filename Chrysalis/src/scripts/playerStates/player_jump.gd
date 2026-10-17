@@ -39,7 +39,7 @@ func physics_update(delta: float) -> void:
 
 	if dir != 0:
 		player.velocity.x = dir * move_speed
-		player._sprite.flip_h = dir < 0
+		player.change_direction(dir)
 	elif player.is_on_floor():
 		Transitioned.emit(self, "PlayerIdle")
 	

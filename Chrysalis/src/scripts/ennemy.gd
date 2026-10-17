@@ -64,6 +64,7 @@ func change_direction() -> void:
 	_player_detector.target_position.x *= -1
 	hitbox.position.x = hitbox_offset_x * direction
 
+
 func get_type() -> StringName:
 	return ennemy_type
 

@@ -26,10 +26,6 @@ func handle_inputs(input_event: InputEvent) -> void :
 func physics_update(delta: float) -> void:
 	pass
 
-	# if not anim_ennemy :
-	# 	anim_ennemy = ennemy.get_animation_player()
-
-	# anim_ennemy.play("Death")
 
 func exit() -> void:
 	pass

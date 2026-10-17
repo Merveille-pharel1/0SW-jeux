@@ -2,16 +2,20 @@ class_name PlayerDashAttack
 extends BaseState
 
 @export var player : Player
-@export var time_out_delay := 0.4
 @export var dash_speed := 600.0
-@export var attack_damage: int = 30
+@export var attack_damage: int = 35
 
 var anim_player : AnimationPlayer
 var elapsedTime : float = 0.0
+var previous_state: BaseState
+
 
 func enter():
 	anim_player = player.get_animation_player()
 	elapsedTime = 0
+
+	if not anim_player.animation_finished.is_connected(_on_animation_finished):
+		anim_player.animation_finished.connect(_on_animation_finished)
 
 	player.hitbox.start_attack(attack_damage)
 
@@ -31,27 +35,36 @@ func physics_update(delta: float) -> void:
 
 	elapsedTime += delta
 
-	var previous_state = player._state_machine.previous_state
+	previous_state = player._state_machine.previous_state
 	if previous_state.name == "PlayerFly":
 		previous_state.elapsedTime += delta
 
-	if elapsedTime > time_out_delay:
+	player.velocity.x = dir * dash_speed
+	anim_player.play("DashAttack")
 
-		player.velocity.x = lerp(player.velocity.x, 0.0, 1)
 
-		if is_zero_approx(player.velocity.x):
+func _on_animation_finished(_anim_name: StringName) -> void:
+	player.velocity.x = 0
 
-			if previous_state.name == "PlayerJump":
-				Transitioned.emit(self, "PlayerFall")
-			elif previous_state.name == "PlayerFly":
-				previous_state.current_state = previous_state.State.FLYING_IDLE
-				Transitioned.emit(self, "PlayerFly")
-			else:
-				Transitioned.emit(self, "PlayerIdle")
+	if is_zero_approx(player.velocity.x):
 
-	else:
-		player.velocity.x = dir * dash_speed
-		anim_player.play("DashAttack")
+		if previous_state.name == "PlayerJump":
+			Transitioned.emit(self, "PlayerFall")
+		elif previous_state.name == "PlayerFly":
+			previous_state.current_state = previous_state.State.FLYING_IDLE
+			Transitioned.emit(self, "PlayerFly")
+		else:
+			Transitioned.emit(self, "PlayerIdle")
+
 
 func exit() -> void:
-	pass
+	player.hitbox.stop_attack()
+
+	if not anim_player.animation_finished.is_connected(_on_animation_finished):
+		anim_player.animation_finished.disconnect(_on_animation_finished)
+	
+	
+
+
+	
+

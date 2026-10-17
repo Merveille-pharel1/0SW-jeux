@@ -34,7 +34,7 @@ func physics_update(delta: float) -> void:
 	
 	if dir != 0:
 		player.velocity.x = dir * move_speed
-		player._sprite.flip_h = dir < 0
+		player.change_direction(dir)
 	else :
 		player.velocity.x = lerp(player.velocity.x, 0.0, 0.8)
 

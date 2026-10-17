@@ -15,6 +15,8 @@ const unAppliedGravityState := ["PlayerFly", "PlayerAttack", "PlayerDashAttack"]
 
 var health: int
 var pending_damage: int = 0
+var hitbox_offset_x: float
+var facing_direction: float = 1.0
 
 func _ready() -> void:
 	if not is_in_group("player"):
@@ -24,6 +26,8 @@ func _ready() -> void:
 
 	hurtbox.damage_received.connect(receive_hit)
 	hit_received.connect(_on_hit_received)
+	
+	hitbox_offset_x = absf(hitbox.position.x)
 
 
 func _physics_process(delta: float) -> void:
@@ -47,3 +51,18 @@ func receive_hit(amount: int) -> void:
 
 func _on_hit_received(amount: int) -> void:
 	_state_machine.on_child_transition( _state_machine.current_state,"PlayerDamage")
+
+
+func change_direction(direction: float) -> void:
+	if is_zero_approx(direction):
+		return
+
+	var new_direction := signf(direction)
+
+	if new_direction == facing_direction:
+		return
+
+	facing_direction = new_direction
+
+	_sprite.flip_h = facing_direction < 0
+	hitbox.position.x = hitbox_offset_x * facing_direction

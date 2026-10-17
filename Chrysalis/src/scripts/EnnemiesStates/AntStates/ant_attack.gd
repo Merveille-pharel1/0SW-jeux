@@ -4,6 +4,7 @@ extends BaseState
 @export var ennemy : Ennemy
 @export var time_out_delay := 1
 @export var attack_damage: int = 10
+@export var respawn_delay: float = 1
 
 var anim_ennemy : AnimationPlayer
 var elapsedTime : float = 0.0
@@ -29,6 +30,7 @@ func physics_update(delta: float) -> void:
 	elapsedTime += delta
 
 	if elapsedTime > time_out_delay:
+		await get_tree().create_timer(respawn_delay).timeout
 		Transitioned.emit(self, "EnnemyVigilance")
 
 func exit() -> void:

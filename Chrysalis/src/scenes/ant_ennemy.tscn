@@ -138,6 +138,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
 size = Vector2(82, 78)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_71xte"]
+radius = 34.0
+height = 124.0
+
 [node name="AntEnnemy" unique_id=1928453538 instance=ExtResource("1_undof")]
 
 [node name="Icon" parent="." index="0" unique_id=1456242847]
@@ -194,10 +198,12 @@ target_position = Vector2(500, 0)
 [node name="FloorDectector" parent="." index="5" unique_id=1191371614]
 target_position = Vector2(107, 88)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHitbox" parent_id_path=PackedInt32Array(38431740) index="0" unique_id=1444817668]
+[node name="EnnemyHitbox" parent="." index="6" unique_id=38431740]
 position = Vector2(68, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHitbox" index="0" unique_id=1444817668]
 shape = SubResource("RectangleShape2D_jckq6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHurtbox" parent_id_path=PackedInt32Array(339930457) index="0" unique_id=374751902]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHurtbox" parent_id_path=PackedInt32Array(339930457) index="0" unique_id=213689433]
 position = Vector2(-8, 5)
-shape = SubResource("CapsuleShape2D_fibgs")
+shape = SubResource("CapsuleShape2D_71xte")

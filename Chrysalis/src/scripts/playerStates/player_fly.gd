@@ -96,8 +96,8 @@ func jumping_move(delta: float) -> void:
 
 	if dir != Vector2.ZERO:
 		player.velocity = dir * fly_speed
-		if dir.y == 0:
-			player._sprite.flip_h = dir.x < 0
+		player.change_direction(dir.x)
+
 	else :
 		player.velocity = player.velocity.lerp(Vector2.ZERO, 0.8)
 
