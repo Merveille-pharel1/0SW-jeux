@@ -244,9 +244,6 @@ shape = SubResource("CapsuleShape2D_2hi74")
 libraries/ = SubResource("AnimationLibrary_tuyoq")
 autoplay = &"Run"
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1325089386]
-position_smoothing_enabled = true
-
 [node name="PlayerHitbox" parent="." unique_id=38431740 instance=ExtResource("3_3v2ag")]
 position = Vector2(54.5, -3)
 collision_layer = 8
