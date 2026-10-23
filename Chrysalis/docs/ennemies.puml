@@ -1,0 +1,27 @@
+@startuml
+
+
+state Patrol
+state Vigilence
+state Chase
+state Attack
+state Damage
+state Death
+
+[*] -> Patrol
+
+Patrol -> Vigilence : distancePlayer < x
+Patrol -> Damage : recoit coup 
+Vigilence -> Patrol : distance > x
+Vigilence -> Chase :  distancePlayer < y < x
+Vigilence -> Damage : recoit coup 
+Vigilence -> Attack : joueur toujours proche
+Chase -> Vigilence : y < distancePlayer < x || ennemie très proche du joueur
+Chase -> Damage : recoit coup 
+Attack -> Vigilence : timeOutDelay
+Chase -> Damage : recoit coup
+Damage -> Death : healt == 0 
+
+
+
+@enduml
