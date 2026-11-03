@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5pniiouemlok"
-path="res://.godot/imported/03-mountains.png-f6f019d34719d6a5542898c0d768d543.ctex"
+uid="uid://nlgd6atrn5rx"
+path="res://.godot/imported/terrain.png-3e317d0eff05035dc0d47d5fc51e1f80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/levels/forest/03-mountains.png"
-dest_files=["res://.godot/imported/03-mountains.png-f6f019d34719d6a5542898c0d768d543.ctex"]
+source_file="res://assets/sprites/levels/forest/newParralax/terrain.png"
+dest_files=["res://.godot/imported/terrain.png-3e317d0eff05035dc0d47d5fc51e1f80.ctex"]
 
 [params]
 

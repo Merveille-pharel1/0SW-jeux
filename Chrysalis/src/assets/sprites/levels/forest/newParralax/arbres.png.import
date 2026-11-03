@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dynt5517vax8"
-path="res://.godot/imported/02-clouds.png-e46fde66b74fb195ec326a2b15438f6f.ctex"
+uid="uid://w872tyjsubra"
+path="res://.godot/imported/arbres.png-7fa0ffcb8392837447930812f9de54d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/levels/forest/02-clouds.png"
-dest_files=["res://.godot/imported/02-clouds.png-e46fde66b74fb195ec326a2b15438f6f.ctex"]
+source_file="res://assets/sprites/levels/forest/newParralax/arbres.png"
+dest_files=["res://.godot/imported/arbres.png-7fa0ffcb8392837447930812f9de54d4.ctex"]
 
 [params]
 

@@ -276,6 +276,7 @@ move_speed = 500.0
 [node name="PlayerJump" type="Node" parent="StateMachine" unique_id=600290920 node_paths=PackedStringArray("player")]
 script = ExtResource("6_tuyoq")
 player = NodePath("../..")
+jump_velocity = -600
 metadata/_custom_type_script = "uid://f8xnl3ngqo0h"
 
 [node name="PlayerFall" type="Node" parent="StateMachine" unique_id=947679401 node_paths=PackedStringArray("player")]
@@ -298,6 +299,7 @@ metadata/_custom_type_script = "uid://mvekywq4wult"
 script = ExtResource("10_y4r1p")
 player = NodePath("../..")
 fly_speed = 600.0
+time_out_delay = 2
 metadata/_custom_type_script = "uid://dn33dgbwyjpgw"
 
 [node name="PlayerDamage" type="Node" parent="StateMachine" unique_id=704034733 node_paths=PackedStringArray("player")]

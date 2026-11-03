@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da8bxxy76exxs"
-path="res://.godot/imported/04-cliffs.png-8c39eca81af4e215278ac01a76dfab95.ctex"
+uid="uid://onkghpyukqxa"
+path="res://.godot/imported/decors1.png-41d41693227c89b031da663ea3e624fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/levels/forest/04-cliffs.png"
-dest_files=["res://.godot/imported/04-cliffs.png-8c39eca81af4e215278ac01a76dfab95.ctex"]
+source_file="res://assets/sprites/levels/forest/newParralax/decors1.png"
+dest_files=["res://.godot/imported/decors1.png-41d41693227c89b031da663ea3e624fc.ctex"]
 
 [params]
 

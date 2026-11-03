@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ccskppbt0287x"]
+
+[ext_resource type="Script" uid="uid://bdckjc6yf510i" path="res://scripts/moving_platform.gd" id="1_1tdcd"]
+[ext_resource type="Texture2D" uid="uid://cw023s2k2v3jh" path="res://assets/sprites/levels/forest/newParralax/plateforms1.png" id="1_ms375"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71xte"]
+size = Vector2(105, 55)
+
+[node name="MovingPlatform" type="Node2D" unique_id=2025573496]
+script = ExtResource("1_1tdcd")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=921367858]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=246307875]
+position = Vector2(0.5, 2.5)
+shape = SubResource("RectangleShape2D_71xte")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=1115720381]
+texture = ExtResource("1_ms375")
+region_enabled = true
+region_rect = Rect2(128, 0, 128, 64)
