@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://dvc5vwbx68xmi"]
+
+[ext_resource type="Texture2D" uid="uid://bd74ghcyyy0pk" path="res://assets/sprites/geekPanel.png" id="1_asuli"]
+[ext_resource type="Script" uid="uid://byqggjhhvx8ap" path="res://scripts/geek_panel.gd" id="1_l83ub"]
+[ext_resource type="Texture2D" uid="uid://bytg4r0mhikwd" path="res://assets/icons/fps.png" id="2_2npyk"]
+[ext_resource type="FontFile" uid="uid://cv1st1lyjb0oc" path="res://assets/fonts/Cinzel-Regular.ttf" id="3_pfx5i"]
+[ext_resource type="Texture2D" uid="uid://bluei30rff1em" path="res://assets/icons/ram.png" id="4_8kbrs"]
+
+[sub_resource type="FontVariation" id="FontVariation_aug7w"]
+base_font = ExtResource("3_pfx5i")
+variation_embolden = 0.81
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_71xte"]
+color = Color(0, 0.8980392, 1, 1)
+grow_begin = -7.0
+grow_end = -2.0
+thickness = 2
+vertical = true
+
+[node name="GeekPanel" type="CanvasLayer" unique_id=639043499]
+visible = false
+script = ExtResource("1_l83ub")
+
+[node name="Control" type="Control" parent="." unique_id=848421280]
+custom_minimum_size = Vector2(470, 60)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -470.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="Icon" type="TextureRect" parent="Control" unique_id=106503255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0000005
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.5)
+texture = ExtResource("1_asuli")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1022064825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 11
+theme_override_constants/margin_bottom = 5
+
+[node name="DataContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=693973181]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="FPS" type="HBoxContainer" parent="Control/MarginContainer/DataContainer" unique_id=903126091]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Control/MarginContainer/DataContainer/FPS" unique_id=471625859]
+layout_mode = 2
+texture = ExtResource("2_2npyk")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/MarginContainer/DataContainer/FPS" unique_id=279892282]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_aug7w")
+theme_override_font_sizes/font_size = 16
+text = "FPS"
+
+[node name="Value" type="Label" parent="Control/MarginContainer/DataContainer/FPS" unique_id=445866796]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_aug7w")
+theme_override_font_sizes/font_size = 16
+text = "60"
+
+[node name="VSeparator" type="VSeparator" parent="Control/MarginContainer/DataContainer/FPS" unique_id=1791161223]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_71xte")
+
+[node name="CurrentMemory" type="HBoxContainer" parent="Control/MarginContainer/DataContainer" unique_id=1634332474]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Control/MarginContainer/DataContainer/CurrentMemory" unique_id=142633766]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("4_8kbrs")
+
+[node name="Value" type="Label" parent="Control/MarginContainer/DataContainer/CurrentMemory" unique_id=1225145103]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_aug7w")
+theme_override_font_sizes/font_size = 16
+text = "142MB"
+
+[node name="VSeparator" type="VSeparator" parent="Control/MarginContainer/DataContainer/CurrentMemory" unique_id=374392699]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_71xte")
+
+[node name="MinMemory" type="HBoxContainer" parent="Control/MarginContainer/DataContainer" unique_id=323140435]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/DataContainer/MinMemory" unique_id=740685655]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_aug7w")
+theme_override_font_sizes/font_size = 16
+text = "Min "
+
+[node name="Value" type="Label" parent="Control/MarginContainer/DataContainer/MinMemory" unique_id=1063291302]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_aug7w")
+theme_override_font_sizes/font_size = 16
+text = "128MB"
+
+[node name="VSeparator" type="VSeparator" parent="Control/MarginContainer/DataContainer/MinMemory" unique_id=1283108953]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_71xte")
+
+[node name="MaxMemory" type="HBoxContainer" parent="Control/MarginContainer/DataContainer" unique_id=1335916698]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/DataContainer/MaxMemory" unique_id=252051466]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_aug7w")
+theme_override_font_sizes/font_size = 16
+text = "Max "
+
+[node name="Value" type="Label" parent="Control/MarginContainer/DataContainer/MaxMemory" unique_id=1531944277]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.8980392, 1, 1)
+theme_override_fonts/font = SubResource("FontVariation_aug7w")
+theme_override_font_sizes/font_size = 16
+text = "178MB"
+
+[node name="Timer" type="Timer" parent="." unique_id=605762305]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
