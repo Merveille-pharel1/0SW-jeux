@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://43weocea8jni"]
+
+[ext_resource type="Script" uid="uid://c8ofia4oboe4d" path="res://scripts/audio.gd" id="1_6n3bj"]
+[ext_resource type="AudioStream" uid="uid://c8v5gmku0ito1" path="res://assets/sound/game_menu.mp3" id="1_aw8cc"]
+[ext_resource type="AudioStream" uid="uid://dnp1adjpqf7yf" path="res://assets/sound/forest_level.mp3" id="3_wdljl"]
+[ext_resource type="AudioStream" uid="uid://dkwjhxoetgpbc" path="res://assets/sound/final_victory.mp3" id="4_dl6it"]
+[ext_resource type="AudioStream" uid="uid://bpu0yxwc84t76" path="res://assets/sound/final_defeat.mp3" id="5_8kkbo"]
+
+[node name="Audio" type="Node2D" unique_id=1748684975]
+script = ExtResource("1_6n3bj")
+
+[node name="Musics" type="Node" parent="." unique_id=4583300]
+
+[node name="MenuAudio" type="AudioStreamPlayer" parent="Musics" unique_id=1210394797]
+stream = ExtResource("1_aw8cc")
+bus = &"Music"
+
+[node name="ForestAudio" type="AudioStreamPlayer" parent="Musics" unique_id=1800469763]
+stream = ExtResource("3_wdljl")
+bus = &"Music"
+
+[node name="VictoryAudio" type="AudioStreamPlayer" parent="Musics" unique_id=1898350781]
+stream = ExtResource("4_dl6it")
+bus = &"Music"
+
+[node name="DefeatAudio" type="AudioStreamPlayer" parent="Musics" unique_id=51277751]
+stream = ExtResource("5_8kkbo")
+bus = &"Music"

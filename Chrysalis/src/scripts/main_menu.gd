@@ -2,6 +2,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Audio.play_music(&"MenuAudio")
 	var playButton := get_node("UI/MenuButtons/PlayButton")
 
 	var buttons := get_node("UI/MenuButtons").get_children()

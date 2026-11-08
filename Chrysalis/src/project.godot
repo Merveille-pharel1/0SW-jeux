@@ -15,9 +15,14 @@ run/main_scene="uid://84rgblgoxa65"
 config/features=PackedStringArray("4.7")
 config/icon="res://assets/icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://imf441y2yrvi"
+
 [autoload]
 
 GeekPanel="*uid://dvc5vwbx68xmi"
+Audio="*uid://43weocea8jni"
 
 [global_group]
 

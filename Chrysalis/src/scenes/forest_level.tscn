@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c0uqcwy5d5tlc"]
 
 [ext_resource type="PackedScene" uid="uid://bqh3urv6c4kv8" path="res://scenes/player.tscn" id="1_3dmh2"]
+[ext_resource type="Script" uid="uid://m5u84k6jx5lp" path="res://scripts/forest_level.gd" id="1_dkstm"]
 [ext_resource type="Texture2D" uid="uid://34ktlpokad1l" path="res://assets/sprites/levels/forest/newParralax/sky.jpeg" id="1_qbm50"]
 [ext_resource type="Texture2D" uid="uid://divkq2gi221xv" path="res://assets/sprites/levels/forest/newParralax/mountains.png" id="2_ccmva"]
 [ext_resource type="PackedScene" uid="uid://cv3bu2oh4pxq4" path="res://scenes/ant_ennemy.tscn" id="2_tpi6n"]
@@ -1010,6 +1011,7 @@ sources/0 = SubResource("TileSetAtlasSource_4wpf3")
 sources/1 = SubResource("TileSetAtlasSource_qbm50")
 
 [node name="ForestLevel" type="Node2D" unique_id=1480784661]
+script = ExtResource("1_dkstm")
 
 [node name="Background2" type="Node2D" parent="." unique_id=1611836888]
 
