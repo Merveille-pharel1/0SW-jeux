@@ -29,6 +29,7 @@ var _current: AudioStreamPlayer
 var masterIndex : int = AudioServer.get_bus_index("Master")
 var musicIndex : int = AudioServer.get_bus_index("Music")
 var effectIndex : int = AudioServer.get_bus_index("Effect")
+var isMuted : bool = false
 
 
 func _ready() -> void:
@@ -44,9 +45,19 @@ func _ready() -> void:
 		
 	load_volumes()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("mute") and not event.is_echo():
+		isMuted = not isMuted
+		_on_muted()	
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save_volumes()
+
+
+func _on_muted() -> void:
+	var bus_index := AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_mute(bus_index, isMuted)
 
 
 func create_player(bus: StringName) -> AudioStreamPlayer:
