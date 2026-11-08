@@ -17,6 +17,7 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_return_button_pressed() -> void:
+	Audio.save_volumes()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 #region SelectedSettingsSignals 

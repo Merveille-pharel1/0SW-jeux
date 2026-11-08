@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 	pass
 	
 func buttonSelected(button: TextureButton):
+	Audio.play_sfx(&"navigate")
 	button.texture_normal = button.texture_hover
 	
 	var label := button.get_node("Label") as Label
@@ -42,10 +43,13 @@ func set_style(label: Label, font_color: Color, outline_color: Color, outline_si
 	label.add_theme_constant_override("outline_size", outline_size)
 
 func _on_exit_button_pressed() -> void:
+	Audio.play_sfx(&"click")
 	get_tree().quit()
 
 func _on_play_button_pressed() -> void:
+	Audio.play_sfx(&"click")
 	get_tree().change_scene_to_file("res://scenes/forest_level.tscn")
 
 func _on_settings_button_pressed() -> void:
+	Audio.play_sfx(&"click")
 	get_tree().change_scene_to_file("res://scenes/settings.tscn")

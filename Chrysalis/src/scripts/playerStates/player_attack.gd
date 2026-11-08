@@ -17,6 +17,7 @@ func enter():
 
 	player.hitbox.start_attack(attack_damage)
 	anim_player.play("Attack")
+	Audio.play_sfx(&"player_attack", 0.5)
 
 	if not anim_player.animation_finished.is_connected(_on_animation_finished):
 		anim_player.animation_finished.connect(_on_animation_finished)

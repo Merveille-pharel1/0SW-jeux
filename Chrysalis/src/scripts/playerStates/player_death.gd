@@ -10,6 +10,8 @@ func enter():
 	anim_player = player.get_animation_player()
 
 	player.velocity = Vector2.ZERO
+	
+	Audio.play_sfx(&"player_death")
 
 	anim_player.play("Death")
 

@@ -16,7 +16,6 @@ func _ready() -> void:
 		audioSetting.get_node("Value").text = str(int(busVolume * 100)) + " %"
 
 		slider.value_changed.connect(func(value: float): _on_value_changed(bus, value, audioSetting))
-		slider.drag_ended.connect(func(value_changed: bool): _on_drag_ended(value_changed))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,9 +25,4 @@ func _process(_delta: float) -> void:
 
 func _on_value_changed(bus: StringName, value: float, settingContainer: HBoxContainer) -> void:
 	Audio.set_volume(bus, value)
-	print(int(value * 100))
 	settingContainer.get_node("Value").text = str(int(value * 100)) + " %"
-
-func _on_drag_ended(value_changed: bool) -> void:
-	if value_changed:
-		Audio.save_volumes()

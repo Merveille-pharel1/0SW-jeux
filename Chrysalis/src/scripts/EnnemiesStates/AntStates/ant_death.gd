@@ -9,6 +9,8 @@ func enter():
 
 	ennemy.velocity = Vector2.ZERO
 
+	Audio.play_sfx(&"ennemy_death", 0.1)
+
 	anim_ennemy.play("Death")
 
 	await anim_ennemy.animation_finished

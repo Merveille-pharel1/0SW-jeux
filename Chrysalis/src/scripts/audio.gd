@@ -3,7 +3,7 @@ extends Node2D
 @onready var musicsNode: Node = $Musics
 
 const SILENT_DB := -80.0
-const SFX_POOL_SIZE := 12
+const SFX_POOL_SIZE := 4
 const DEFAULT_VOLUME := 0.6
 const AUDIO_CONFIG_PATH := "user://audio.cfg"
 const VOLUME_BUSES: Array[StringName] = [&"Master", &"Music", &"Effect"]
@@ -23,6 +23,7 @@ const SFX : = {
 var _tracks := {}
 var _base_db := {}
 var _fades := {} 
+var _sfx_pool: Array[AudioStreamPlayer] = []
 var _current: AudioStreamPlayer
 
 var masterIndex : int = AudioServer.get_bus_index("Master")
@@ -37,11 +38,18 @@ func _ready() -> void:
 		if audio is AudioStreamPlayer:
 			_tracks[String(audio.name)] = audio
 			_base_db[audio] = audio.volume_db
+
+	for i in SFX_POOL_SIZE:
+		_sfx_pool.append(create_player(&"Effect"))
 		
 	load_volumes()
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		save_volumes()
 
-func _create_player(bus: StringName) -> AudioStreamPlayer:
+
+func create_player(bus: StringName) -> AudioStreamPlayer:
 	var audioPlayer = AudioStreamPlayer.new()
 	audioPlayer.bus = bus
 	add_child(audioPlayer)
@@ -91,9 +99,9 @@ func _fade_to(audioPlayer: AudioStreamPlayer, target_db: float, duration: float,
 	tween.tween_method(
 		func(v: float): 
 			audioPlayer.volume_db = linear_to_db(maxf(v, 0.01)),
-			db_to_linear(audioPlayer.volume_db),
-			db_to_linear(target_db),
-			duration
+		db_to_linear(audioPlayer.volume_db),
+		db_to_linear(target_db),
+		duration
 	)
 		
 	if stop_when_done:
@@ -140,3 +148,21 @@ func load_volumes() -> void:
 			value = clampf(cfg.get_value("audio", String(bus), DEFAULT_VOLUME), 0.0, 1.0)
 		
 		set_volume(bus, value)
+
+# EFFETS
+
+func play_sfx(sound: StringName, pitch_variation := 0.0) -> void:
+	if not SFX.has(sound):
+		push_warning("Effet inconnu : %s" % sound)
+		return
+	var p := _get_free_sfx_player()
+	p.stream = SFX[sound]
+	p.pitch_scale = 1.0 + randf_range(-pitch_variation, pitch_variation)
+	p.play()
+
+
+func _get_free_sfx_player() -> AudioStreamPlayer:
+	for p in _sfx_pool:
+		if not p.playing:
+			return p
+	return _sfx_pool[0]   # tous occupés : on réutilise le premier
