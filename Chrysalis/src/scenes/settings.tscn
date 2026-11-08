@@ -163,6 +163,7 @@ theme_override_constants/margin_bottom = 100
 layout_mode = 2
 
 [node name="LeftPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=214969402]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 size_flags_vertical = 0
@@ -190,11 +191,12 @@ expand_mode = 1
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/LeftPanel" unique_id=1215993682]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer" unique_id=431043624]
+[node name="SettingsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer" unique_id=431043624]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="SettingsTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=1305957938]
+[node name="SettingsTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer" unique_id=1305957938]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
@@ -204,22 +206,24 @@ theme_override_fonts/font = ExtResource("4_f4mfi")
 theme_override_font_sizes/font_size = 23
 text = "CONFIGURATIONS"
 
-[node name="CrystalLine" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=892398367]
+[node name="CrystalLine" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer" unique_id=892398367]
 layout_mode = 2
 texture = ExtResource("5_es4n0")
 
-[node name="AudioButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=600543075]
+[node name="AudioButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer" unique_id=600543075]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ControlsButton")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_aisiw")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
+texture_focused = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="AudioIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" unique_id=584385433]
+[node name="AudioIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer/AudioButton" unique_id=584385433]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -234,7 +238,7 @@ texture = ExtResource("9_1g033")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="AudioTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" unique_id=1909302396]
+[node name="AudioTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer/AudioButton" unique_id=1909302396]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -255,18 +259,21 @@ theme_override_fonts/font = ExtResource("4_f4mfi")
 theme_override_font_sizes/font_size = 23
 text = "AUDIO"
 
-[node name="ControlsButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=1960542543]
+[node name="ControlsButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer" unique_id=1960542543]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+focus_neighbor_top = NodePath("../AudioButton")
+focus_neighbor_bottom = NodePath("../DifficultyButton")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_aisiw")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
+texture_focused = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ControlsIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" unique_id=253791028]
+[node name="ControlsIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer/ControlsButton" unique_id=253791028]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -281,7 +288,7 @@ texture = ExtResource("10_01roj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ControlsTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" unique_id=1122148936]
+[node name="ControlsTitle" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer/ControlsButton" unique_id=1122148936]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -302,18 +309,21 @@ theme_override_fonts/font = ExtResource("4_f4mfi")
 theme_override_font_sizes/font_size = 23
 text = "CONTRÔLES"
 
-[node name="DifficultyButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer" unique_id=1371214322]
+[node name="DifficultyButton" type="TextureButton" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer" unique_id=1371214322]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ControlsButton")
+focus_neighbor_bottom = NodePath("../../../../../../ReturnButton")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_aisiw")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
+texture_focused = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="DifficultyIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" unique_id=152376619]
+[node name="DifficultyIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer/DifficultyButton" unique_id=152376619]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -328,7 +338,7 @@ texture = ExtResource("11_wqwn7")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" unique_id=1719277652]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer/DifficultyButton" unique_id=1719277652]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -350,6 +360,7 @@ theme_override_font_sizes/font_size = 23
 text = "DIFFICULTÉ"
 
 [node name="RightPanel" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1494164759]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(674, 400)
 layout_mode = 2
 size_flags_vertical = 0
@@ -378,6 +389,7 @@ layout_mode = 2
 texture = ExtResource("5_es4n0")
 
 [node name="AudioContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=1374558027]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
@@ -409,6 +421,7 @@ text = "Général"
 [node name="Slider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MasterContainer" unique_id=536118809]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../MusicContainer/Slider")
 theme_override_icons/grabber = ExtResource("12_7kvyq")
 theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
 theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
@@ -456,6 +469,8 @@ text = "Musique"
 [node name="Slider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=591343218]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MasterContainer/Slider")
+focus_neighbor_bottom = NodePath("../../EffectContainer/Slider")
 theme_override_icons/grabber = ExtResource("12_7kvyq")
 theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
 theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
@@ -502,6 +517,8 @@ text = "Effets sonores"
 [node name="Slider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=1541987907]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MusicContainer/Slider")
+focus_neighbor_bottom = NodePath("../../../../../../LeftPanel/MarginContainer/SettingsContainer/ControlsButton")
 theme_override_icons/grabber = ExtResource("12_7kvyq")
 theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
 theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
@@ -524,7 +541,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_slodc")
 text = "0 %"
 
 [node name="DifficultyContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=1600001833]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
@@ -532,11 +548,13 @@ theme_override_constants/separation = 0
 [node name="EasyButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer" unique_id=611647803]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../NormalButton")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g5y2q")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
+texture_focused = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -579,12 +597,15 @@ text = "FACILE"
 [node name="NormalButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer" unique_id=1307465487]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+focus_neighbor_top = NodePath("../EasyButton")
+focus_neighbor_bottom = NodePath("../DifficultButton")
 toggle_mode = true
 button_pressed = true
 button_group = SubResource("ButtonGroup_g5y2q")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
+texture_focused = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -627,11 +648,14 @@ text = "Normal"
 [node name="DifficultButton" type="TextureButton" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer" unique_id=1709830194]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+focus_neighbor_top = NodePath("../NormalButton")
+focus_neighbor_bottom = NodePath("../../../../../../../ReturnButton")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_g5y2q")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
+texture_focused = ExtResource("7_gjs24")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -686,6 +710,8 @@ theme_override_constants/separation = 50
 
 [node name="KeyboardButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/ControlsContainer/ModeControls" unique_id=1411470544]
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../LeftPanel/MarginContainer/SettingsContainer/ControlsButton")
+focus_neighbor_right = NodePath("../GamePadButton")
 theme = SubResource("Theme_f1e71")
 theme_override_fonts/font = SubResource("FontVariation_f1e71")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gcetw")
@@ -699,6 +725,9 @@ icon = ExtResource("19_k00b3")
 
 [node name="GamePadButton" type="Button" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/ControlsContainer/ModeControls" unique_id=1916516551]
 layout_mode = 2
+focus_neighbor_left = NodePath("../KeyboardButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../../../LeftPanel/MarginContainer/SettingsContainer/DifficultyButton")
 theme_override_fonts/font = SubResource("FontVariation_gcetw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gcetw")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_i24gk")
@@ -734,6 +763,7 @@ offset_top = -95.0
 offset_right = 262.0
 offset_bottom = -27.0
 grow_vertical = 0
+focus_neighbor_top = NodePath("../MarginContainer/HBoxContainer/LeftPanel/MarginContainer/SettingsContainer/DifficultyButton")
 texture_normal = ExtResource("6_83j8s")
 texture_pressed = ExtResource("7_gjs24")
 texture_hover = ExtResource("7_gjs24")
@@ -777,9 +807,6 @@ theme_override_fonts/font = ExtResource("4_f4mfi")
 theme_override_font_sizes/font_size = 23
 text = "RETOUR"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" to="." method="_on_difficulty_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/EasyButton" to="." method="_on_easy_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/NormalButton" to="." method="_on_normal_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/DifficultButton" to="." method="_on_difficult_button_pressed"]

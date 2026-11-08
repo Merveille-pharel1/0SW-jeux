@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 	pass
 	
 func buttonSelected(button: TextureButton):
+	button.grab_focus()
 	Audio.play_sfx(&"navigate")
 	button.texture_normal = button.texture_hover
 	
@@ -31,6 +32,7 @@ func buttonSelected(button: TextureButton):
 	set_style(label, Color("FFFFFF"), Color("#4FC3FF"), 4)
 
 func buttonUnselected(button: TextureButton, normal_texture):
+	button.release_focus()
 	button.texture_normal = normal_texture
 
 	var label := button.get_node("Label") as Label
