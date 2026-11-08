@@ -4,7 +4,9 @@ extends Node2D
 
 const SILENT_DB := -80.0
 const SFX_POOL_SIZE := 12
-const DEFAULT_VOLUME := 0.01
+const DEFAULT_VOLUME := 0.06
+const AUDIO_CONFIG_PATH := "user://audio.cfg"
+const VOLUME_BUSES: Array[StringName] = [&"Master", &"Music", &"Effect"]
 
 const SFX : = {
 	&"click": preload("res://assets/sound/button_clicked.mp3"),
@@ -35,13 +37,13 @@ var effectIndex : int = AudioServer.get_bus_index("Effect")
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	AudioServer.set_bus_volume_db(masterIndex, linear_to_db(0.6))
-	AudioServer.set_bus_volume_db(musicIndex, linear_to_db(0.6))
 	
 	for audio in musicsNode.get_children():
 		if audio is AudioStreamPlayer:
 			_tracks[String(audio.name)] = audio
 			_base_db[audio] = audio.volume_db
+		
+	load_volumes()
 
 
 func _create_player(bus: StringName) -> AudioStreamPlayer:
@@ -117,3 +119,29 @@ func get_volume(bus_name: StringName) -> float:
 	if idx == -1 or AudioServer.is_bus_mute(idx):
 		return 0.0
 	return db_to_linear(AudioServer.get_bus_volume_db(idx))
+	
+
+# sauvegarde des paramètres audios
+
+func save_volumes() -> void:
+	var cfg := ConfigFile.new()
+	cfg.load(AUDIO_CONFIG_PATH) 
+	
+	for bus in VOLUME_BUSES:
+		cfg.set_value("audio", String(bus), get_volume(bus))
+		
+	var err := cfg.save(AUDIO_CONFIG_PATH)
+	if err != OK:
+		push_warning("Impossible d'enregistrer les réglages (erreur %d)" % err)
+
+
+func load_volumes() -> void:
+	var cfg := ConfigFile.new()
+	var found := cfg.load(AUDIO_CONFIG_PATH) == OK
+	
+	for bus in VOLUME_BUSES:
+		var value: float = DEFAULT_VOLUME
+		if found:
+			value = clampf(cfg.get_value("audio", String(bus), DEFAULT_VOLUME), 0.0, 1.0)
+		
+		set_volume(bus, value)
