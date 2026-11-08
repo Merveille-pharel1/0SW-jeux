@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b5423fma3e8q" path="res://assets/icons/controller.svg" id="10_01roj"]
 [ext_resource type="Texture2D" uid="uid://bpch5q4fmbxku" path="res://assets/icons/difficulty.svg" id="11_wqwn7"]
 [ext_resource type="Texture2D" uid="uid://dytjry7rkrtx7" path="res://assets/sprites/slider/slider_curseur.png" id="12_7kvyq"]
+[ext_resource type="Script" uid="uid://cp7fxibkxlbiu" path="res://scripts/audio_container.gd" id="12_gcetw"]
 [ext_resource type="Texture2D" uid="uid://bk3fspy3tim6b" path="res://assets/icons/arrow_back.svg" id="12_oe2nd"]
 [ext_resource type="Texture2D" uid="uid://dgp1fj53uymui" path="res://assets/sprites/slider/slider_piste.png" id="13_ql1j0"]
 [ext_resource type="Texture2D" uid="uid://bwrfos4qcfbd5" path="res://assets/sprites/slider/slider_remplissage.png" id="14_6dbjw"]
@@ -377,16 +378,16 @@ layout_mode = 2
 texture = ExtResource("5_es4n0")
 
 [node name="AudioContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=1374558027]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
+script = ExtResource("12_gcetw")
 
-[node name="MusicContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer" unique_id=1540909692]
+[node name="MasterContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer" unique_id=1540909692]
 layout_mode = 2
 theme_override_constants/separation = 13
 
-[node name="MusicIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=1507599661]
+[node name="MasterIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MasterContainer" unique_id=1507599661]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 mouse_filter = 2
@@ -394,7 +395,54 @@ texture = ExtResource("9_1g033")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=717331326]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MasterContainer" unique_id=717331326]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_gm75t")
+text = "Général"
+
+[node name="Slider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MasterContainer" unique_id=536118809]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("12_7kvyq")
+theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
+theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_e0rcb")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_e0rcb")
+max_value = 1.0
+step = 0.01
+value = 0.6
+
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MasterContainer" unique_id=383078861]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
+theme_override_colors/font_outline_color = Color(0.14117648, 0.3019608, 0.56078434, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_f4mfi")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_slodc")
+text = "0 %"
+
+[node name="MusicContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer" unique_id=876082158]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="MusicIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=975010445]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_1g033")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=501517875]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.91764706, 0.95686275, 1, 1)
@@ -405,7 +453,7 @@ theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_gm75t")
 text = "Musique"
 
-[node name="MusicSlider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=536118809]
+[node name="Slider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=591343218]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("12_7kvyq")
@@ -413,8 +461,11 @@ theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
 theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_e0rcb")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_e0rcb")
+max_value = 1.0
+step = 0.01
+value = 0.6
 
-[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=383078861]
+[node name="Value" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer" unique_id=1224695713]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -448,7 +499,7 @@ theme_override_fonts/font = ExtResource("4_f4mfi")
 theme_override_font_sizes/font_size = 21
 text = "Effets sonores"
 
-[node name="EffectSlider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=1541987907]
+[node name="Slider" type="HSlider" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=1541987907]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("12_7kvyq")
@@ -456,6 +507,9 @@ theme_override_icons/grabber_highlight = ExtResource("12_7kvyq")
 theme_override_styles/slider = SubResource("StyleBoxTexture_jabl8")
 theme_override_styles/grabber_area = SubResource("StyleBoxTexture_e0rcb")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_e0rcb")
+max_value = 1.0
+step = 0.01
+value = 0.6
 
 [node name="Value" type="Label" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer" unique_id=1363470624]
 custom_minimum_size = Vector2(90, 0)
@@ -618,6 +672,7 @@ theme_override_font_sizes/font_size = 23
 text = "Difficile"
 
 [node name="ControlsContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting" unique_id=794280903]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("19_f1e71")
@@ -725,8 +780,6 @@ text = "RETOUR"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/AudioButton" to="." method="_on_audio_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/LeftPanel/MarginContainer/VBoxContainer/DifficultyButton" to="." method="_on_difficulty_button_pressed"]
-[connection signal="value_changed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer/EffectContainer/EffectSlider" to="." method="_on_effect_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/EasyButton" to="." method="_on_easy_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/NormalButton" to="." method="_on_normal_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/DifficultyContainer/DifficultButton" to="." method="_on_difficult_button_pressed"]

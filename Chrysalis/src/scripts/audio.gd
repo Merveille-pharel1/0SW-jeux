@@ -4,7 +4,7 @@ extends Node2D
 
 const SILENT_DB := -80.0
 const SFX_POOL_SIZE := 12
-const DEFAULT_VOLUME := 0.06
+const DEFAULT_VOLUME := 0.6
 const AUDIO_CONFIG_PATH := "user://audio.cfg"
 const VOLUME_BUSES: Array[StringName] = [&"Master", &"Music", &"Effect"]
 
@@ -24,11 +24,6 @@ var _tracks := {}
 var _base_db := {}
 var _fades := {} 
 var _current: AudioStreamPlayer
-
-#Variable for sounds volume
-#var generalVolume = 60.0
-#var effectVolume := 60.0
-#var musicVolume := 60.0
 
 var masterIndex : int = AudioServer.get_bus_index("Master")
 var musicIndex : int = AudioServer.get_bus_index("Music")

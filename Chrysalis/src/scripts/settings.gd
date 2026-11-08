@@ -7,8 +7,6 @@ extends Control
 @onready var audioContainer: VBoxContainer = $MarginContainer/HBoxContainer/RightPanel/MarginContainer/SelectedSetting/AudioContainer
 
 @export var game_difficulty: String = "Normal"
-@export var music_value: int = 0
-@export var effect_value: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,22 +51,6 @@ func offSettingsVisibility() -> void:
 	selectedSettingContainer.get_node("AudioContainer").visible = false
 	selectedSettingContainer.get_node("DifficultyContainer").visible = false
 	selectedSettingContainer.get_node("ControlsContainer").visible = false
-
-#endregion
-
-#region AudiosSetting
-
-func _on_effect_slider_value_changed(value: float) -> void:
-	var effectContainer = audioContainer.get_node("EffectContainer")
-	var effectValue: int  = effectContainer.get_node("EffectSlider").value 
-	effectContainer.get_node("Value").text = str(effectValue) + " %"
-	effect_value = effectValue 
-
-func _on_music_slider_value_changed(value: float) -> void:
-	var musicContainer = audioContainer.get_node("MusicContainer")
-	var musicValue: int = musicContainer.get_node("MusicSlider").value
-	musicContainer.get_node("Value").text = str(musicValue) + " %"
-	music_value = musicValue
 
 #endregion
 
