@@ -14,6 +14,7 @@ extends Node2D
 
 var elevator_openned := false
 var road_launch := false
+var camera_bounds_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,38 +68,99 @@ func AscendPlayer() -> void :
 
 	await ascendTween.finished
 
+	%ExitFloorSprite.visible = false
+	
 	player.reparent(initial_parent, true)
 	player.global_position = floor_exit.global_position
 	player.in_elevator = false
 
 	cabin.get_node("ForegroundCabin").z_index = -1
 
-func set_camera_bounds(zone: Node2D) -> void:
+
+
+func set_camera_bounds(zone: Node2D, immediate: bool = false) -> void:
 	var top_left: Marker2D = zone.get_node("TopLeft")
 	var bottom_right: Marker2D = zone.get_node("BottomRight")
 
-	player_camera.limit_left = floori(top_left.global_position.x)
-	player_camera.limit_top = floori(top_left.global_position.y)
-	player_camera.limit_right = floori(bottom_right.global_position.x)
-	player_camera.limit_bottom = floori(bottom_right.global_position.y)
+	var top := floori(top_left.global_position.y)
+	var bottom := ceili(bottom_right.global_position.y)
+
+	if zone == $CameraBounds/Shaft:
+		top = floori($CameraBounds/GroundFloor/TopLeft.global_position.y)
+		bottom = ceili($CameraBounds/Basement/BottomRight.global_position.y)
+
+	if camera_bounds_tween:
+		camera_bounds_tween.kill()
+
+	
+	var target := Vector4(
+		floori(top_left.global_position.x),
+		top,
+		floori(bottom_right.global_position.x),
+		bottom
+	)
+
+	if immediate:
+		apply_camera_bounds(target)
+		return
+
+	var current := Vector4(
+		player_camera.limit_left, player_camera.limit_top,
+		player_camera.limit_right, player_camera.limit_bottom
+	)
+
+	camera_bounds_tween = create_tween()
+	camera_bounds_tween.set_trans(Tween.TRANS_SINE)
+	camera_bounds_tween.set_ease(Tween.EASE_IN_OUT)
+	camera_bounds_tween.tween_method(apply_camera_bounds, current, target, 0.5)
 
 
-func _on_basement_area_body_entered(body: Node2D) -> void:
-	if body == player:
-		if player.global_position.y <= %BasementArea.get_node("CollisionShape2D").global_position.y:
-			set_camera_bounds($CameraBounds/Basement)
-		else:
-			set_camera_bounds($CameraBounds/Shaft)
+func apply_camera_bounds(bounds: Vector4) -> void:
+	player_camera.limit_left = roundi(bounds.x)
+	player_camera.limit_top = roundi(bounds.y)
+	player_camera.limit_right = roundi(bounds.z)
+	player_camera.limit_bottom = roundi(bounds.w)
 
 
 func _on_upper_area_body_entered(body: Node2D) -> void:
 	if body == player:
 		set_camera_bounds($CameraBounds/UpperFloor)
+
+func _on_down_basement_area_body_entered(body: Node2D) -> void:
+	if body == player:
+		var trigger: CollisionShape2D = %DownBasementArea.get_node("CollisionShape2D")
+
+		if player.global_position.y <= trigger.global_position.y:
+			set_camera_bounds($CameraBounds/Basement)
+		else:
+			set_camera_bounds($CameraBounds/Shaft)
 	
 
 func _on_shaft_area_body_entered(body: Node2D) -> void:
 	if body == player:
-		if player.global_position.y <= %ShaftArea.get_node("CollisionShape2D").global_position.y:
+		var trigger: CollisionShape2D = %ShaftArea.get_node("CollisionShape2D")
+
+		if player.global_position.y <= trigger.global_position.y:
 			set_camera_bounds($CameraBounds/Shaft)
 		else:
 			set_camera_bounds($CameraBounds/GroundFloor)
+
+
+func _on_shaft_area_body_exited(body: Node2D) -> void:
+	if body == player:
+		var trigger: CollisionShape2D = %ShaftArea.get_node("CollisionShape2D")
+
+		if player.global_position.y <= trigger.global_position.y:
+			set_camera_bounds($CameraBounds/GroundFloor)
+		else:
+			set_camera_bounds($CameraBounds/Shaft)
+
+
+func _on_down_basement_area_body_exited(body: Node2D) -> void:
+	if body == player:
+		var trigger: CollisionShape2D = %DownBasementArea.get_node("CollisionShape2D")
+
+		if player.global_position.y <= trigger.global_position.y:
+			set_camera_bounds($CameraBounds/Shaft)
+		else:
+			set_camera_bounds($CameraBounds/Basement)

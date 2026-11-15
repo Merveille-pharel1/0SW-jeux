@@ -19,10 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://ieqdgnnhv5i5" path="res://assets/sprites/levels/laboratory/salle13.png" id="13_qgafj"]
 [ext_resource type="PackedScene" uid="uid://bwk41q8i2fdij" path="res://scenes/laboratory_end_portal.tscn" id="15_klf6g"]
 [ext_resource type="PackedScene" uid="uid://dymnqnbuachor" path="res://scenes/laboratory_start_portal.tscn" id="16_vx2u5"]
+[ext_resource type="Texture2D" uid="uid://dwe3il04mbgig" path="res://assets/sprites/levels/laboratory/mur.png" id="17_s41hv"]
 [ext_resource type="PackedScene" uid="uid://c3upjkxv5yhml" path="res://scenes/interaction_box.tscn" id="18_esikj"]
 [ext_resource type="Texture2D" uid="uid://ouavtwfdr4dd" path="res://assets/sprites/levels/laboratory/salle11-boss/03-fond-cabine.png" id="21_ocr7t"]
 [ext_resource type="Texture2D" uid="uid://c7tuovfrnnlu0" path="res://assets/sprites/levels/laboratory/salle11-boss/04-grille-avant.png" id="22_pqtx2"]
 [ext_resource type="Texture2D" uid="uid://cgonja3nep6b8" path="res://assets/sprites/levels/laboratory/salle11-boss/05-linteau-fixe.png" id="23_pqtx2"]
+[ext_resource type="Texture2D" uid="uid://bpduyaugwursy" path="res://assets/sprites/levels/laboratory/sol.png" id="25_8dlr1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
 size = Vector2(11493, 135)
@@ -86,6 +88,9 @@ size = Vector2(277, 17.717773)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjigr"]
 size = Vector2(311, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_own0s"]
+size = Vector2(1556, 23)
 
 [node name="LaboratoryLevel" type="Node2D" unique_id=951456205 node_paths=PackedStringArray("player_camera")]
 script = ExtResource("1_ltlic")
@@ -176,6 +181,18 @@ texture = ExtResource("12_8dlr1")
 position = Vector2(21338, 725)
 texture = ExtResource("13_qgafj")
 
+[node name="WallParallax" type="Parallax2D" parent="Parallax" unique_id=1808054339]
+visible = false
+
+[node name="Icon" type="Sprite2D" parent="Parallax/WallParallax" unique_id=453835503]
+z_index = -15
+texture_repeat = 2
+position = Vector2(-703, -501)
+texture = ExtResource("17_s41hv")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 23500, 3100)
+
 [node name="Terrain" type="StaticBody2D" parent="." unique_id=47382193]
 
 [node name="Sol1" type="CollisionShape2D" parent="Terrain" unique_id=868856658]
@@ -260,9 +277,9 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2146041879]
 offset = Vector2(68, -152)
-limit_left = -621
-limit_top = -375
-limit_right = 18255
+limit_left = -627
+limit_top = -259
+limit_right = 22652
 limit_bottom = 1974
 
 [node name="InteractiveElements" type="Node2D" parent="." unique_id=875664259]
@@ -357,13 +374,6 @@ unique_name_in_owner = true
 position = Vector2(11086.5, 301.1411)
 shape = SubResource("RectangleShape2D_lal2j")
 
-[node name="BasementArea" type="Area2D" parent="CameraBounds" unique_id=949238940]
-unique_name_in_owner = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds/BasementArea" unique_id=1091486128]
-position = Vector2(11086.5, 1080)
-shape = SubResource("RectangleShape2D_lal2j")
-
 [node name="UpperArea" type="Area2D" parent="CameraBounds" unique_id=1593450333]
 unique_name_in_owner = true
 
@@ -371,8 +381,25 @@ unique_name_in_owner = true
 position = Vector2(18065.5, 1034.5)
 shape = SubResource("RectangleShape2D_cjigr")
 
+[node name="DownBasementArea" type="Area2D" parent="CameraBounds" unique_id=1762631984]
+unique_name_in_owner = true
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds/DownBasementArea" unique_id=1289815091]
+position = Vector2(10570, 1268.5)
+shape = SubResource("RectangleShape2D_own0s")
+
+[node name="ExitFloorSprite" type="Sprite2D" parent="." unique_id=1643925545]
+unique_name_in_owner = true
+z_index = 10
+position = Vector2(18044.5, 940.00006)
+scale = Vector2(0.673652, 0.8620692)
+texture = ExtResource("25_8dlr1")
+
 [connection signal="interact" from="InteractiveElements/InteractionBox" to="." method="_on_interaction_box_interact"]
 [connection signal="body_entered" from="InteractiveElements/Elevator/BoardingZone" to="." method="_on_boarding_zone_body_entered"]
 [connection signal="body_entered" from="CameraBounds/ShaftArea" to="." method="_on_shaft_area_body_entered"]
-[connection signal="body_entered" from="CameraBounds/BasementArea" to="." method="_on_basement_area_body_entered"]
+[connection signal="body_exited" from="CameraBounds/ShaftArea" to="." method="_on_shaft_area_body_exited"]
 [connection signal="body_entered" from="CameraBounds/UpperArea" to="." method="_on_upper_area_body_entered"]
+[connection signal="body_entered" from="CameraBounds/DownBasementArea" to="." method="_on_down_basement_area_body_entered"]
+[connection signal="body_exited" from="CameraBounds/DownBasementArea" to="." method="_on_down_basement_area_body_exited"]
