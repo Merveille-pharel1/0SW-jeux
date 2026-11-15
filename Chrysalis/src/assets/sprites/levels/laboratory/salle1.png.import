@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bucob2nmk8w68"
-path="res://.godot/imported/cadre_config.png-cf3296c452f324107bd1dd513871901c.ctex"
+uid="uid://dtijo44lofj62"
+path="res://.godot/imported/salle1.png-59acc097e5f91311893527739e3e3a4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cadre_config.png"
-dest_files=["res://.godot/imported/cadre_config.png-cf3296c452f324107bd1dd513871901c.ctex"]
+source_file="res://assets/sprites/levels/laboratory/salle1.png"
+dest_files=["res://.godot/imported/salle1.png-59acc097e5f91311893527739e3e3a4b.ctex"]
 
 [params]
 

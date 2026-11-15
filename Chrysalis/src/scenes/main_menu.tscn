@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://84rgblgoxa65"]
 
 [ext_resource type="Script" uid="uid://dmbcljrsh4lpd" path="res://scripts/main_menu.gd" id="1_8ln24"]
-[ext_resource type="Texture2D" uid="uid://p0r72r1qcp8b" path="res://assets/sprites/main_menu_sans_boutons.png" id="1_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://bwvnbrimy7e6a" path="res://assets/sprites/button_normal.png" id="2_wu84c"]
-[ext_resource type="Texture2D" uid="uid://d3u6mqde3vtew" path="res://assets/sprites/button_hover.png" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://p0r72r1qcp8b" path="res://assets/sprites/ui/main_menu_sans_boutons.png" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://bwvnbrimy7e6a" path="res://assets/sprites/ui/button_normal.png" id="2_wu84c"]
+[ext_resource type="Texture2D" uid="uid://d3u6mqde3vtew" path="res://assets/sprites/ui/button_hover.png" id="3_8ln24"]
 [ext_resource type="FontFile" uid="uid://cv1st1lyjb0oc" path="res://assets/fonts/Cinzel-Regular.ttf" id="4_wu84c"]
 [ext_resource type="PackedScene" uid="uid://dkl5mgmewlh7s" path="res://scenes/butter_fly.tscn" id="6_rtw2f"]
 

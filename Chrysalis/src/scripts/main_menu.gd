@@ -1,5 +1,7 @@
 extends Control
 
+var forest_level: PackedScene = preload("res://scenes/forest_level.tscn") 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Audio.play_music(&"MenuAudio")
@@ -50,7 +52,7 @@ func _on_exit_button_pressed() -> void:
 
 func _on_play_button_pressed() -> void:
 	Audio.play_sfx(&"click")
-	get_tree().change_scene_to_file("res://scenes/forest_level.tscn")
+	SceneTransition.change_scene(forest_level)
 
 func _on_settings_button_pressed() -> void:
 	Audio.play_sfx(&"click")

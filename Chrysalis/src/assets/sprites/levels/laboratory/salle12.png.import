@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3u6mqde3vtew"
-path="res://.godot/imported/button_hover.png-0a87af6b1925f2ae0450c131d5550b2e.ctex"
+uid="uid://cwk7eviap7g5y"
+path="res://.godot/imported/salle12.png-46cf1af530ccf0fd03daa631e8b0ffd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/button_hover.png"
-dest_files=["res://.godot/imported/button_hover.png-0a87af6b1925f2ae0450c131d5550b2e.ctex"]
+source_file="res://assets/sprites/levels/laboratory/salle12.png"
+dest_files=["res://.godot/imported/salle12.png-46cf1af530ccf0fd03daa631e8b0ffd6.ctex"]
 
 [params]
 

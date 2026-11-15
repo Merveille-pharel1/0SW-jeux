@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://cxb1cpfjjhg6e" path="res://shaders/portal.gdshader" id="1_ef3v5"]
 [ext_resource type="Script" uid="uid://dn3efd0hcl5u3" path="res://scripts/portal.gd" id="1_jr6l0"]
 [ext_resource type="Texture2D" uid="uid://8342gu02vf3k" path="res://assets/sprites/levels/forest/portal.png" id="2_grrij"]
+[ext_resource type="PackedScene" uid="uid://c3upjkxv5yhml" path="res://scenes/interaction_box.tscn" id="4_d4jfq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jckq6"]
 shader = ExtResource("1_ef3v5")
@@ -34,7 +35,6 @@ scale = Vector2(0.31487116, 0.28298944)
 texture = ExtResource("2_grrij")
 
 [node name="Sparks" type="GPUParticles2D" parent="." unique_id=347786097]
-emitting = false
 amount = 20
 lifetime = 0.32
 process_material = SubResource("ParticleProcessMaterial_1ffj6")
@@ -45,6 +45,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityZone" unique_id=1860292302]
 position = Vector2(0.5, -9)
 shape = SubResource("RectangleShape2D_jckq6")
+
+[node name="InteractionBox" parent="." unique_id=1358225124 instance=ExtResource("4_d4jfq")]
+position = Vector2(-8, -174)
+collision_size = Vector2(354, 451.5)
 
 [connection signal="body_entered" from="ProximityZone" to="." method="_on_proximity_zone_body_entered"]
 [connection signal="body_exited" from="ProximityZone" to="." method="_on_proximity_zone_body_exited"]

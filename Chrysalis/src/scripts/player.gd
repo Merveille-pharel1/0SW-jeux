@@ -17,6 +17,7 @@ var health: int
 var pending_damage: int = 0
 var hitbox_offset_x: float
 var facing_direction: float = 1.0
+var in_elevator := false
 
 func _ready() -> void:
 	if not is_in_group("player"):
@@ -29,8 +30,15 @@ func _ready() -> void:
 	
 	hitbox_offset_x = absf(hitbox.position.x)
 
+	if SceneTransition.teleport_arrival_pending:
+		SceneTransition.finish_teleport(self)
+
 
 func _physics_process(delta: float) -> void:
+	
+	if in_elevator:
+		return
+	
 	# Add the gravity.
 	if not is_on_floor() and _state_machine.current_state.name not in unAppliedGravityState:
 		velocity += get_gravity() * delta

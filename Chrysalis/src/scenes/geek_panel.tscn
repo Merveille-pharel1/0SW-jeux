@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvc5vwbx68xmi"]
 
-[ext_resource type="Texture2D" uid="uid://bd74ghcyyy0pk" path="res://assets/sprites/geekPanel.png" id="1_asuli"]
+[ext_resource type="Texture2D" uid="uid://bd74ghcyyy0pk" path="res://assets/sprites/ui/geekPanel.png" id="1_asuli"]
 [ext_resource type="Script" uid="uid://byqggjhhvx8ap" path="res://scripts/geek_panel.gd" id="1_l83ub"]
 [ext_resource type="Texture2D" uid="uid://bytg4r0mhikwd" path="res://assets/icons/fps.png" id="2_2npyk"]
 [ext_resource type="FontFile" uid="uid://cv1st1lyjb0oc" path="res://assets/fonts/Cinzel-Regular.ttf" id="3_pfx5i"]

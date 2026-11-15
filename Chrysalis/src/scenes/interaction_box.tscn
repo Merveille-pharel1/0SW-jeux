@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c3upjkxv5yhml"]
+
+[ext_resource type="Texture2D" uid="uid://bd5o6h68qfcry" path="res://assets/sprites/ui/interact_chrysalide.png" id="1_3ucns"]
+[ext_resource type="Script" uid="uid://d26xl5yma5d8r" path="res://scripts/interaction_box.gd" id="1_hsar5"]
+[ext_resource type="FontFile" uid="uid://cv1st1lyjb0oc" path="res://assets/fonts/Cinzel-Regular.ttf" id="1_nd77j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rujfs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ojrlu"]
+
+[sub_resource type="FontVariation" id="FontVariation_jckq6"]
+base_font = ExtResource("1_nd77j")
+
+[node name="InteractionBox" type="Area2D" unique_id=1358225124]
+collision_mask = 2
+script = ExtResource("1_hsar5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591090564]
+position = Vector2(0, 35.25)
+shape = SubResource("RectangleShape2D_rujfs")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=478024723]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.0
+offset_right = 137.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ojrlu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1890532020]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="KeyIcon" type="TextureRect" parent="Panel/HBoxContainer" unique_id=1499982144]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("1_3ucns")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer" unique_id=1333041472]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9843137, 0.90588236, 0.7490196, 1)
+theme_override_colors/font_outline_color = Color(0.14901961, 0.043137256, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = SubResource("FontVariation_jckq6")
+theme_override_font_sizes/font_size = 25
+text = "Entrer dans le portail"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

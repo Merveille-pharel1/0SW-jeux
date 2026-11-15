@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by6axm4be46qu"
-path="res://.godot/imported/background_settings.png-e77f78f78460e47049be5736a6f5e9e4.ctex"
+uid="uid://d14voqpnbomfe"
+path="res://.godot/imported/salle8.png-0b82e4999b1583824a1372525de5ff33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/background_settings.png"
-dest_files=["res://.godot/imported/background_settings.png-e77f78f78460e47049be5736a6f5e9e4.ctex"]
+source_file="res://assets/sprites/levels/laboratory/salle8.png"
+dest_files=["res://.godot/imported/salle8.png-0b82e4999b1583824a1372525de5ff33.ctex"]
 
 [params]
 

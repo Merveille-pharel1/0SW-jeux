@@ -1,0 +1,378 @@
+[gd_scene format=3 uid="uid://iof7sml8pu2y"]
+
+[ext_resource type="PackedScene" uid="uid://bqh3urv6c4kv8" path="res://scenes/player.tscn" id="1_3dmh2"]
+[ext_resource type="Script" uid="uid://bcd5v6yfnow1y" path="res://scripts/laboratory_level.gd" id="1_ltlic"]
+[ext_resource type="Texture2D" uid="uid://dtijo44lofj62" path="res://assets/sprites/levels/laboratory/salle1.png" id="1_srgne"]
+[ext_resource type="Texture2D" uid="uid://byqo7g5eyqmhp" path="res://assets/sprites/levels/laboratory/salle11-boss/01-salle-fermee.png" id="2_iw4rd"]
+[ext_resource type="Texture2D" uid="uid://dowmnh8mapx0h" path="res://assets/sprites/levels/laboratory/salle2.png" id="2_klf6g"]
+[ext_resource type="Texture2D" uid="uid://cw37dcfdyfabl" path="res://assets/sprites/levels/laboratory/salle11-boss/02-salle-gaine-vide.png" id="3_kyns2"]
+[ext_resource type="Texture2D" uid="uid://dy8lth2y5e4py" path="res://assets/sprites/levels/laboratory/salle3.png" id="3_vx2u5"]
+[ext_resource type="Texture2D" uid="uid://bdld4hd2288mc" path="res://assets/sprites/levels/laboratory/salle4.png" id="4_drvnt"]
+[ext_resource type="Texture2D" uid="uid://dm8ht3tpoibgs" path="res://assets/sprites/levels/laboratory/salle5.png" id="5_ltlic"]
+[ext_resource type="Texture2D" uid="uid://bks6w2e4h2s2r" path="res://assets/sprites/levels/laboratory/salle6.png" id="6_esikj"]
+[ext_resource type="Texture2D" uid="uid://cx30813ng5txq" path="res://assets/sprites/levels/laboratory/salle7.png" id="7_iw4rd"]
+[ext_resource type="Texture2D" uid="uid://d14voqpnbomfe" path="res://assets/sprites/levels/laboratory/salle8.png" id="8_kyns2"]
+[ext_resource type="Texture2D" uid="uid://mmqhfe58ysgn" path="res://assets/sprites/levels/laboratory/salle9.png" id="9_ocr7t"]
+[ext_resource type="Texture2D" uid="uid://5nb10sf4j6wd" path="res://assets/sprites/levels/laboratory/salle10.png" id="10_pqtx2"]
+[ext_resource type="Texture2D" uid="uid://byfasu6ldetbj" path="res://assets/sprites/levels/laboratory/salle11_fermée.png" id="11_s41hv"]
+[ext_resource type="Texture2D" uid="uid://cwk7eviap7g5y" path="res://assets/sprites/levels/laboratory/salle12.png" id="12_8dlr1"]
+[ext_resource type="Texture2D" uid="uid://ieqdgnnhv5i5" path="res://assets/sprites/levels/laboratory/salle13.png" id="13_qgafj"]
+[ext_resource type="PackedScene" uid="uid://bwk41q8i2fdij" path="res://scenes/laboratory_end_portal.tscn" id="15_klf6g"]
+[ext_resource type="PackedScene" uid="uid://dymnqnbuachor" path="res://scenes/laboratory_start_portal.tscn" id="16_vx2u5"]
+[ext_resource type="PackedScene" uid="uid://c3upjkxv5yhml" path="res://scenes/interaction_box.tscn" id="18_esikj"]
+[ext_resource type="Texture2D" uid="uid://ouavtwfdr4dd" path="res://assets/sprites/levels/laboratory/salle11-boss/03-fond-cabine.png" id="21_ocr7t"]
+[ext_resource type="Texture2D" uid="uid://c7tuovfrnnlu0" path="res://assets/sprites/levels/laboratory/salle11-boss/04-grille-avant.png" id="22_pqtx2"]
+[ext_resource type="Texture2D" uid="uid://cgonja3nep6b8" path="res://assets/sprites/levels/laboratory/salle11-boss/05-linteau-fixe.png" id="23_pqtx2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
+size = Vector2(11493, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71xte"]
+size = Vector2(12569, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58qqf"]
+size = Vector2(57, 1464)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aug7w"]
+size = Vector2(35, 743)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxtbu"]
+size = Vector2(718, 185)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pln0"]
+size = Vector2(28, 1443)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftewv"]
+size = Vector2(1124, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qltvy"]
+size = Vector2(1128, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huqou"]
+size = Vector2(697, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbnfj"]
+size = Vector2(2398, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ggv0"]
+size = Vector2(300, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktnoc"]
+size = Vector2(6250, 35.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tanvm"]
+size = Vector2(4414, 194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkunm"]
+size = Vector2(48, 738)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tii5b"]
+size = Vector2(31, 703)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3ao2"]
+size = Vector2(4697.5, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wrq8"]
+size = Vector2(4720.75, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7c4r"]
+size = Vector2(31, 703)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocr7t"]
+size = Vector2(95, 60.204224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lal2j"]
+size = Vector2(277, 17.717773)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjigr"]
+size = Vector2(311, 27)
+
+[node name="LaboratoryLevel" type="Node2D" unique_id=951456205 node_paths=PackedStringArray("player_camera")]
+script = ExtResource("1_ltlic")
+decor_boss_close = ExtResource("2_iw4rd")
+decor_boss_open = ExtResource("3_kyns2")
+player_camera = NodePath("Player/Camera2D")
+
+[node name="Parallax" type="Node2D" parent="." unique_id=19500128]
+z_index = -10
+
+[node name="Salle1Parallax" type="Parallax2D" parent="Parallax" unique_id=296968602]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle1Parallax" unique_id=1959944959]
+position = Vector2(530, 0)
+texture = ExtResource("1_srgne")
+offset = Vector2(0, 2)
+
+[node name="Salle2Parallax" type="Parallax2D" parent="Parallax" unique_id=893454147]
+scroll_offset = Vector2(0, 2)
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle2Parallax" unique_id=1417591899]
+position = Vector2(2702, 2)
+texture = ExtResource("2_klf6g")
+
+[node name="Salle3Parallax" type="Parallax2D" parent="Parallax" unique_id=2020135750]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle3Parallax" unique_id=295411008]
+position = Vector2(4874, 2)
+texture = ExtResource("3_vx2u5")
+
+[node name="Salle4Parallax" type="Parallax2D" parent="Parallax" unique_id=1954074607]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle4Parallax" unique_id=1312050284]
+position = Vector2(6521, 2)
+texture = ExtResource("4_drvnt")
+
+[node name="Salle5Parallax" type="Parallax2D" parent="Parallax" unique_id=1528383139]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle5Parallax" unique_id=1364878134]
+position = Vector2(8693, 2)
+texture = ExtResource("5_ltlic")
+
+[node name="Salle6Parallax" type="Parallax2D" parent="Parallax" unique_id=611092784]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle6Parallax" unique_id=491887255]
+position = Vector2(10865, 2)
+texture = ExtResource("6_esikj")
+
+[node name="Salle7Parallax" type="Parallax2D" parent="Parallax" unique_id=797605067]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle7Parallax" unique_id=1165653722]
+position = Vector2(10865, 726)
+texture = ExtResource("7_iw4rd")
+
+[node name="Salle8Parallax" type="Parallax2D" parent="Parallax" unique_id=1432558338]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle8Parallax" unique_id=1426804911]
+position = Vector2(10866, 1450)
+texture = ExtResource("8_kyns2")
+
+[node name="Salle9Parallax" type="Parallax2D" parent="Parallax" unique_id=1618873340]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle9Parallax" unique_id=1826193052]
+position = Vector2(13038, 1450)
+texture = ExtResource("9_ocr7t")
+
+[node name="Salle10Parallax" type="Parallax2D" parent="Parallax" unique_id=713130659]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle10Parallax" unique_id=910612248]
+position = Vector2(15210, 1450)
+texture = ExtResource("10_pqtx2")
+
+[node name="Salle11Parallax" type="Parallax2D" parent="Parallax" unique_id=595546679]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle11Parallax" unique_id=2020555000]
+position = Vector2(17123, 1450)
+texture = ExtResource("11_s41hv")
+
+[node name="Salle12Parallax" type="Parallax2D" parent="Parallax" unique_id=1752937023]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle12Parallax" unique_id=321439383]
+position = Vector2(18987, 725)
+texture = ExtResource("12_8dlr1")
+
+[node name="Salle13Parallax" type="Parallax2D" parent="Parallax" unique_id=957195933]
+
+[node name="Icon" type="Sprite2D" parent="Parallax/Salle13Parallax" unique_id=686136197]
+position = Vector2(21338, 725)
+texture = ExtResource("13_qgafj")
+
+[node name="Terrain" type="StaticBody2D" parent="." unique_id=47382193]
+
+[node name="Sol1" type="CollisionShape2D" parent="Terrain" unique_id=868856658]
+position = Vector2(5188.5, 297.5)
+shape = SubResource("RectangleShape2D_jckq6")
+
+[node name="Mur1" type="CollisionShape2D" parent="Terrain" unique_id=489526446]
+position = Vector2(5670.5, -368)
+shape = SubResource("RectangleShape2D_71xte")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terrain" unique_id=1283975816]
+position = Vector2(11981.5, 357)
+shape = SubResource("RectangleShape2D_58qqf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terrain" unique_id=1818147261]
+position = Vector2(-571.5, -5.5)
+shape = SubResource("RectangleShape2D_aug7w")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Terrain" unique_id=2141875398]
+position = Vector2(11593, 323.5)
+shape = SubResource("RectangleShape2D_jxtbu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Terrain" unique_id=1888356757]
+position = Vector2(9766, 1089.5)
+shape = SubResource("RectangleShape2D_0pln0")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Terrain" unique_id=933958949]
+position = Vector2(10348, 390)
+shape = SubResource("RectangleShape2D_ftewv")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Terrain" unique_id=1169332658]
+position = Vector2(10347, 1076)
+shape = SubResource("RectangleShape2D_qltvy")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Terrain" unique_id=1982732132]
+position = Vector2(11604.5, 1085.5)
+shape = SubResource("RectangleShape2D_huqou")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Terrain" unique_id=2093660233]
+position = Vector2(10980, 1774)
+shape = SubResource("RectangleShape2D_pbnfj")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Terrain" unique_id=1312923420]
+position = Vector2(13050, 1510.5)
+shape = SubResource("RectangleShape2D_7ggv0")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Terrain" unique_id=1865968259]
+position = Vector2(15083, 1071)
+shape = SubResource("RectangleShape2D_ktnoc")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Terrain" unique_id=1089761093]
+position = Vector2(16002, 1684)
+shape = SubResource("RectangleShape2D_tanvm")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Terrain" unique_id=1483023351]
+position = Vector2(18234, 1423)
+shape = SubResource("RectangleShape2D_rkunm")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Terrain" unique_id=1607023754]
+position = Vector2(17891.5, 704.5)
+shape = SubResource("RectangleShape2D_tii5b")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Terrain" unique_id=392079527]
+position = Vector2(20255.25, 961)
+shape = SubResource("RectangleShape2D_k3ao2")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Terrain" unique_id=2140333088]
+position = Vector2(20239.625, 321)
+shape = SubResource("RectangleShape2D_2wrq8")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Terrain" unique_id=2072708863]
+position = Vector2(22620, 701)
+shape = SubResource("RectangleShape2D_u7c4r")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain" unique_id=898264701]
+position = Vector2(11206.211, 179.02934)
+polygon = PackedVector2Array(-1.2109375, -2.0293427, 59.789063, -115.02934, 128.78906, -113.02934, 137.78906, -101.02934, 75.78906, 35.970657, 55.789063, 36.970657)
+
+[node name="Player" parent="." unique_id=1626296191 instance=ExtResource("1_3dmh2")]
+position = Vector2(-281, 53)
+metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2146041879]
+offset = Vector2(68, -152)
+limit_left = -621
+limit_top = -375
+limit_right = 18255
+limit_bottom = 1974
+
+[node name="InteractiveElements" type="Node2D" parent="." unique_id=875664259]
+
+[node name="LaboratoryEndPortal" parent="InteractiveElements" unique_id=2055798605 instance=ExtResource("15_klf6g")]
+z_index = -5
+position = Vector2(22343, 697)
+
+[node name="LaboratoryStartPortal" parent="InteractiveElements" unique_id=19832284 instance=ExtResource("16_vx2u5")]
+z_index = -5
+position = Vector2(-272, -4)
+
+[node name="InteractionBox" parent="InteractiveElements" unique_id=1358225124 instance=ExtResource("18_esikj")]
+z_index = 5
+position = Vector2(17863, 1403)
+collision_size = Vector2(100, 200)
+
+[node name="Elevator" type="Node2D" parent="InteractiveElements" unique_id=146678063]
+unique_name_in_owner = true
+
+[node name="BoardingZone" type="Area2D" parent="InteractiveElements/Elevator" unique_id=1555619509]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveElements/Elevator/BoardingZone" unique_id=1300698841]
+position = Vector2(18040.5, 1539.898)
+shape = SubResource("RectangleShape2D_ocr7t")
+
+[node name="Cabin" type="Node2D" parent="InteractiveElements/Elevator" unique_id=1835995904]
+position = Vector2(18038, 1441)
+metadata/_edit_group_ = true
+
+[node name="BackgroundCabin" type="Sprite2D" parent="InteractiveElements/Elevator/Cabin" unique_id=20012434]
+z_index = -1
+texture = ExtResource("21_ocr7t")
+
+[node name="PlacePlayer" type="Marker2D" parent="InteractiveElements/Elevator/Cabin" unique_id=1873216784]
+position = Vector2(2.390625, 51.83374)
+
+[node name="ForegroundCabin" type="Sprite2D" parent="InteractiveElements/Elevator/Cabin" unique_id=384343178]
+z_index = 1
+texture = ExtResource("22_pqtx2")
+
+[node name="ArrivalCabin" type="Marker2D" parent="InteractiveElements/Elevator" unique_id=1450661925]
+position = Vector2(18038, 716)
+
+[node name="FloorExit" type="Marker2D" parent="InteractiveElements/Elevator" unique_id=291060440]
+position = Vector2(18050.674, 825.09344)
+
+[node name="ElevatorLintel" type="Sprite2D" parent="InteractiveElements/Elevator" unique_id=7749354]
+z_index = 2
+position = Vector2(18043.373, 1207.211)
+texture = ExtResource("23_pqtx2")
+
+[node name="CameraBounds" type="Node2D" parent="." unique_id=1762513728]
+
+[node name="GroundFloor" type="Node2D" parent="CameraBounds" unique_id=1755682845]
+
+[node name="TopLeft" type="Marker2D" parent="CameraBounds/GroundFloor" unique_id=1793401112]
+position = Vector2(-625, -130)
+
+[node name="BottomRight" type="Marker2D" parent="CameraBounds/GroundFloor" unique_id=1218866832]
+position = Vector2(11881.633, 364.909)
+
+[node name="Shaft" type="Node2D" parent="CameraBounds" unique_id=426180291]
+
+[node name="TopLeft" type="Marker2D" parent="CameraBounds/Shaft" unique_id=1815053792]
+position = Vector2(9713.736, 672.707)
+
+[node name="BottomRight" type="Marker2D" parent="CameraBounds/Shaft" unique_id=1841797490]
+position = Vector2(11881.6, 1087.419)
+
+[node name="Basement" type="Node2D" parent="CameraBounds" unique_id=1023091926]
+
+[node name="TopLeft" type="Marker2D" parent="CameraBounds/Basement" unique_id=1786799500]
+position = Vector2(9713.73, 1325.818)
+
+[node name="BottomRight" type="Marker2D" parent="CameraBounds/Basement" unique_id=467856894]
+position = Vector2(18145.5, 1810.161)
+
+[node name="UpperFloor" type="Node2D" parent="CameraBounds" unique_id=61256669]
+
+[node name="TopLeft" type="Marker2D" parent="CameraBounds/UpperFloor" unique_id=1000231501]
+position = Vector2(17832.16, 602.87)
+
+[node name="BottomRight" type="Marker2D" parent="CameraBounds/UpperFloor" unique_id=1936464859]
+position = Vector2(22604.328, 1085.9061)
+
+[node name="ShaftArea" type="Area2D" parent="CameraBounds" unique_id=1310117175]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds/ShaftArea" unique_id=1956541054]
+position = Vector2(11086.5, 301.1411)
+shape = SubResource("RectangleShape2D_lal2j")
+
+[node name="BasementArea" type="Area2D" parent="CameraBounds" unique_id=949238940]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds/BasementArea" unique_id=1091486128]
+position = Vector2(11086.5, 1080)
+shape = SubResource("RectangleShape2D_lal2j")
+
+[node name="UpperArea" type="Area2D" parent="CameraBounds" unique_id=1593450333]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBounds/UpperArea" unique_id=971440866]
+position = Vector2(18065.5, 1034.5)
+shape = SubResource("RectangleShape2D_cjigr")
+
+[connection signal="interact" from="InteractiveElements/InteractionBox" to="." method="_on_interaction_box_interact"]
+[connection signal="body_entered" from="InteractiveElements/Elevator/BoardingZone" to="." method="_on_boarding_zone_body_entered"]
+[connection signal="body_entered" from="CameraBounds/ShaftArea" to="." method="_on_shaft_area_body_entered"]
+[connection signal="body_entered" from="CameraBounds/BasementArea" to="." method="_on_basement_area_body_entered"]
+[connection signal="body_entered" from="CameraBounds/UpperArea" to="." method="_on_upper_area_body_entered"]

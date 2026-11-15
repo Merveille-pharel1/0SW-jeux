@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dymnqnbuachor"]
+
+[ext_resource type="Shader" uid="uid://bsrsk0h2amcb0" path="res://shaders/vortex_portal.gdshader" id="3_q3mwc"]
+[ext_resource type="Texture2D" uid="uid://com3pvjl1568y" path="res://assets/sprites/levels/laboratory/portail_debut.png" id="4_e75rk"]
+[ext_resource type="PackedScene" uid="uid://c3upjkxv5yhml" path="res://scenes/interaction_box.tscn" id="5_jc5x1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_av3x7"]
+shader = ExtResource("3_q3mwc")
+shader_parameter/centre = Vector2(0.52, 0.58)
+shader_parameter/rayon = Vector2(0.19, 0.22)
+shader_parameter/vitesse = 5.300000198185961
+
+[node name="LaboratoryStartPortal" type="Node2D" unique_id=2055798605]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=849113589]
+material = SubResource("ShaderMaterial_av3x7")
+position = Vector2(-4.0000153, -40.99999)
+scale = Vector2(0.556797, 0.42896172)
+texture = ExtResource("4_e75rk")
+
+[node name="InteractionBox" parent="." unique_id=1358225124 instance=ExtResource("5_jc5x1")]
+visible = false
+position = Vector2(-8, -214)

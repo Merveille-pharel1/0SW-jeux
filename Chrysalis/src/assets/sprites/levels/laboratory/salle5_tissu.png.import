@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2v0t1mqskw1w"
-path="res://.godot/imported/bouton_settings_normal.png-36d6a4e0d3ffb067c10a11ecde7c742a.ctex"
+uid="uid://iq6ohqdy0ybv"
+path="res://.godot/imported/salle5_tissu.png-269526d83ae1780f0742697280bda27d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bouton_settings_normal.png"
-dest_files=["res://.godot/imported/bouton_settings_normal.png-36d6a4e0d3ffb067c10a11ecde7c742a.ctex"]
+source_file="res://assets/sprites/levels/laboratory/salle5_tissu.png"
+dest_files=["res://.godot/imported/salle5_tissu.png-269526d83ae1780f0742697280bda27d.ctex"]
 
 [params]
 

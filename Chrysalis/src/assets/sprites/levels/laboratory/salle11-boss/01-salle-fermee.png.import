@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpmx81mph5qto"
-path="res://.godot/imported/separateur_config.png-86be3d73fd2bec02f0089207aa6bde71.ctex"
+uid="uid://byqo7g5eyqmhp"
+path="res://.godot/imported/01-salle-fermee.png-047b5908d4e34a7cae81447f9d50f575.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/separateur_config.png"
-dest_files=["res://.godot/imported/separateur_config.png-86be3d73fd2bec02f0089207aa6bde71.ctex"]
+source_file="res://assets/sprites/levels/laboratory/salle11-boss/01-salle-fermee.png"
+dest_files=["res://.godot/imported/01-salle-fermee.png-047b5908d4e34a7cae81447f9d50f575.ctex"]
 
 [params]
 

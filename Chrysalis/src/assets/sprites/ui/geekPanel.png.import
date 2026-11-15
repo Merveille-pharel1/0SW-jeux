@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bccx7855lms31"
-path="res://.godot/imported/bouton_settings_hover.png-674c45fb5cbeb03f311d8a2ee3963ac3.ctex"
+uid="uid://bd74ghcyyy0pk"
+path="res://.godot/imported/geekPanel.png-8577e67d9530305cf57672ad45df1f02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/bouton_settings_hover.png"
-dest_files=["res://.godot/imported/bouton_settings_hover.png-674c45fb5cbeb03f311d8a2ee3963ac3.ctex"]
+source_file="res://assets/sprites/ui/geekPanel.png"
+dest_files=["res://.godot/imported/geekPanel.png-8577e67d9530305cf57672ad45df1f02.ctex"]
 
 [params]
 

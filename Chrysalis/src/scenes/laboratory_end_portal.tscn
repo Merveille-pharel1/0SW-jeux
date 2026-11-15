@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bwk41q8i2fdij"]
+
+[ext_resource type="Script" uid="uid://dn3efd0hcl5u3" path="res://scripts/portal.gd" id="1_c3qvt"]
+[ext_resource type="Shader" uid="uid://bsrsk0h2amcb0" path="res://shaders/vortex_portal.gdshader" id="2_lsqxw"]
+[ext_resource type="PackedScene" uid="uid://c0uqcwy5d5tlc" path="res://scenes/forest1.tscn" id="2_mxjt5"]
+[ext_resource type="Texture2D" uid="uid://dxmnmwf8jvjc3" path="res://assets/sprites/levels/laboratory/portail_fin.png" id="3_mxjt5"]
+[ext_resource type="PackedScene" uid="uid://c3upjkxv5yhml" path="res://scenes/interaction_box.tscn" id="4_av3x7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jckq6"]
+shader = ExtResource("2_lsqxw")
+shader_parameter/centre = Vector2(0.51, 0.55)
+shader_parameter/rayon = Vector2(0.19, 0.27)
+shader_parameter/vitesse = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
+size = Vector2(819, 304)
+
+[node name="LaboratoryEndPortal" type="Node2D" unique_id=2055798605]
+script = ExtResource("1_c3qvt")
+next_scene = ExtResource("2_mxjt5")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=849113589]
+material = SubResource("ShaderMaterial_jckq6")
+position = Vector2(-1.9999876, -22.99999)
+scale = Vector2(1.8333334, 1.4112554)
+texture = ExtResource("3_mxjt5")
+
+[node name="ProximityZone" type="Area2D" parent="." unique_id=2146592291]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityZone" unique_id=1860292302]
+position = Vector2(0.5, -9)
+shape = SubResource("RectangleShape2D_jckq6")
+
+[node name="InteractionBox" parent="." unique_id=1358225124 instance=ExtResource("4_av3x7")]
+position = Vector2(-8, -214)
+collision_size = Vector2(354, 451.5)
+
+[connection signal="body_entered" from="ProximityZone" to="." method="_on_proximity_zone_body_entered"]
+[connection signal="body_exited" from="ProximityZone" to="." method="_on_proximity_zone_body_exited"]

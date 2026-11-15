@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btyaisr6dv6al"
-path="res://.godot/imported/butterfly.png-488743ddb7e4238b2766d0638dafcac3.ctex"
+uid="uid://ouavtwfdr4dd"
+path="res://.godot/imported/03-fond-cabine.png-0ccc83800a5ea9c980182d9564fa0154.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/butterfly.png"
-dest_files=["res://.godot/imported/butterfly.png-488743ddb7e4238b2766d0638dafcac3.ctex"]
+source_file="res://assets/sprites/levels/laboratory/salle11-boss/03-fond-cabine.png"
+dest_files=["res://.godot/imported/03-fond-cabine.png-0ccc83800a5ea9c980182d9564fa0154.ctex"]
 
 [params]
 

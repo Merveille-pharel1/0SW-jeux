@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd74ghcyyy0pk"
-path="res://.godot/imported/geekPanel.png-0e07ed3cb5f823ae3cb42cabd2b4ac54.ctex"
+uid="uid://dxmnmwf8jvjc3"
+path="res://.godot/imported/portail_fin.png-232d72cbfa7fbdb9719520bcc2e12a2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/geekPanel.png"
-dest_files=["res://.godot/imported/geekPanel.png-0e07ed3cb5f823ae3cb42cabd2b4ac54.ctex"]
+source_file="res://assets/sprites/levels/laboratory/portail_fin.png"
+dest_files=["res://.godot/imported/portail_fin.png-232d72cbfa7fbdb9719520bcc2e12a2e.ctex"]
 
 [params]
 

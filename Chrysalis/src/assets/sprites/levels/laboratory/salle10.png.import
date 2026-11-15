@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t7bbew2j0q7d"
-path="res://.godot/imported/cristal_config.png-427fe2fb0e325e1956296ae81cf44bf6.ctex"
+uid="uid://5nb10sf4j6wd"
+path="res://.godot/imported/salle10.png-6399b8c4ec5059a44aeee4f3202376bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/cristal_config.png"
-dest_files=["res://.godot/imported/cristal_config.png-427fe2fb0e325e1956296ae81cf44bf6.ctex"]
+source_file="res://assets/sprites/levels/laboratory/salle10.png"
+dest_files=["res://.godot/imported/salle10.png-6399b8c4ec5059a44aeee4f3202376bb.ctex"]
 
 [params]
 
