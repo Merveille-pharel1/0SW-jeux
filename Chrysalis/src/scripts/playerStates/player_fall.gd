@@ -15,16 +15,17 @@ func _input(event: InputEvent) -> void:
 	handle_inputs(event)
 
 func handle_inputs(input_event: InputEvent) -> void :
-	dir = Input.get_axis("move_left", "move_right")
-
+	pass
 
 func physics_update(delta: float) -> void:
+	dir = Input.get_axis("move_left", "move_right")
+
 	if not anim_player :
 		anim_player = player.get_animation_player()
 
 	if dir != 0:
 		player.velocity.x = dir * move_speed
-		player._sprite.flip_h = dir < 0
+		player.change_direction(dir)
 
 	if player.is_on_floor():
 		Transitioned.emit(self, "PlayerIdle")

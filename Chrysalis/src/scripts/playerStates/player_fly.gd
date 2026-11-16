@@ -27,7 +27,6 @@ func _input(event: InputEvent) -> void:
 	handle_inputs(event)
 
 func handle_inputs(input_event: InputEvent) -> void :
-	dir = Input.get_vector("move_left", "move_right", "fly_up", "fly_down")
 
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("toggle_fly"):
 		Transitioned.emit(self, "PlayerFall")
@@ -40,6 +39,7 @@ func handle_inputs(input_event: InputEvent) -> void :
 
 
 func physics_update(delta: float) -> void:
+	dir = Input.get_vector("move_left", "move_right", "fly_up", "fly_down")
 
 	if not anim_player :
 		anim_player = player.get_animation_player()

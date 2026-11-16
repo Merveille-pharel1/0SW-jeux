@@ -14,7 +14,10 @@ func _input(event: InputEvent) -> void:
 func handle_inputs(input_event: InputEvent) -> void :
 	var dir : float = Input.get_axis("move_left", "move_right")
 
-	if (dir != 0):
+	if dir != 0:
+		if player._state_machine.current_state == self:
+			player.change_direction(dir)
+			
 		Transitioned.emit(self, "PlayerRun")
 
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():

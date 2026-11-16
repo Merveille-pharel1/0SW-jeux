@@ -28,7 +28,7 @@ func handle_inputs(input_event: InputEvent) -> void :
 
 	
 func physics_update(delta: float) -> void:
-	var dir = -1 if player._sprite.flip_h else 1
+	var dir := player.facing_direction
 
 	if not anim_player :
 		anim_player = player.get_animation_player()
@@ -60,7 +60,7 @@ func _on_animation_finished(_anim_name: StringName) -> void:
 func exit() -> void:
 	player.hitbox.stop_attack()
 
-	if not anim_player.animation_finished.is_connected(_on_animation_finished):
+	if anim_player.animation_finished.is_connected(_on_animation_finished):
 		anim_player.animation_finished.disconnect(_on_animation_finished)
 	
 	

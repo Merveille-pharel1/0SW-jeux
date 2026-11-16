@@ -19,9 +19,8 @@ func _input(event: InputEvent) -> void:
 func handle_inputs(input_event: InputEvent) -> void :
 	dir = Input.get_axis("move_left", "move_right")
 
-	if dir != 0:
-		if player.is_on_floor():
-			Transitioned.emit(self, "PlayerRun")
+	if dir != 0 and player.is_on_floor():
+		Transitioned.emit(self, "PlayerRun")
 	
 	if Input.is_action_just_pressed("attack"):
 		Transitioned.emit(self, "PlayerAttack")
