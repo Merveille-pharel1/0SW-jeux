@@ -2,12 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://cyujuybm5wskf" path="res://scenes/ennemy.tscn" id="1_undof"]
 [ext_resource type="Texture2D" uid="uid://dxoroesqiiyjw" path="res://assets/sprites/ennemies/ant_spritesheet.png" id="2_78fg7"]
-[ext_resource type="Script" uid="uid://boyrjb3kmtc4b" path="res://scripts/EnnemiesStates/AntStates/ant_vigilance.gd" id="3_78fg7"]
+[ext_resource type="Shader" uid="uid://bm03uqlvkhmd6" path="res://shaders/player_hit_flash.gdshader" id="2_j154y"]
 [ext_resource type="Script" uid="uid://beahysgbn8vl5" path="res://scripts/EnnemiesStates/AntStates/ant_patrol.gd" id="4_fibgs"]
 [ext_resource type="Script" uid="uid://bgypf1i2wu30h" path="res://scripts/EnnemiesStates/AntStates/ant_attack.gd" id="5_text3"]
 [ext_resource type="Script" uid="uid://dpn22j3ffxi6u" path="res://scripts/EnnemiesStates/AntStates/ant_chase.gd" id="6_x2gqv"]
-[ext_resource type="Script" uid="uid://cfb4qpsdxsye2" path="res://scripts/EnnemiesStates/AntStates/ant_damage.gd" id="7_xxgy3"]
 [ext_resource type="Script" uid="uid://b5pwt83vfrgqi" path="res://scripts/EnnemiesStates/AntStates/ant_death.gd" id="8_nb8yi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fibgs"]
+resource_local_to_scene = true
+shader = ExtResource("2_j154y")
+shader_parameter/hit_color = Color(1, 0.88, 0.88, 1)
+shader_parameter/hit_strength = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fibgs"]
 radius = 36.0
@@ -143,8 +148,13 @@ radius = 34.0
 height = 124.0
 
 [node name="AntEnnemy" unique_id=1928453538 instance=ExtResource("1_undof")]
+ennemy_type = null
+max_health = null
+attack_range = null
+lose_player_distance = null
 
 [node name="Icon" parent="." index="0" unique_id=1456242847]
+material = SubResource("ShaderMaterial_fibgs")
 position = Vector2(1, -1)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_78fg7")
@@ -161,32 +171,22 @@ libraries/ = SubResource("AnimationLibrary_xxgy3")
 [node name="StateMachine" parent="." index="3" unique_id=532768462 node_paths=PackedStringArray("initial_state")]
 initial_state = NodePath("EnnemyPatrol")
 
-[node name="EnnemyVigilance" type="Node" parent="StateMachine" index="0" unique_id=1369246604 node_paths=PackedStringArray("ennemy")]
-script = ExtResource("3_78fg7")
-ennemy = NodePath("../..")
-metadata/_custom_type_script = "uid://boyrjb3kmtc4b"
-
-[node name="EnnemyPatrol" type="Node" parent="StateMachine" index="1" unique_id=2128995964 node_paths=PackedStringArray("ennemy")]
+[node name="EnnemyPatrol" type="Node" parent="StateMachine" index="0" unique_id=2128995964 node_paths=PackedStringArray("ennemy")]
 script = ExtResource("4_fibgs")
 ennemy = NodePath("../..")
 metadata/_custom_type_script = "uid://beahysgbn8vl5"
 
-[node name="EnnemyAttack" type="Node" parent="StateMachine" index="2" unique_id=1017221039 node_paths=PackedStringArray("ennemy")]
+[node name="EnnemyAttack" type="Node" parent="StateMachine" index="1" unique_id=1017221039 node_paths=PackedStringArray("ennemy")]
 script = ExtResource("5_text3")
 ennemy = NodePath("../..")
 metadata/_custom_type_script = "uid://bgypf1i2wu30h"
 
-[node name="EnnemyChase" type="Node" parent="StateMachine" index="3" unique_id=684616567 node_paths=PackedStringArray("ennemy")]
+[node name="EnnemyChase" type="Node" parent="StateMachine" index="2" unique_id=684616567 node_paths=PackedStringArray("ennemy")]
 script = ExtResource("6_x2gqv")
 ennemy = NodePath("../..")
 metadata/_custom_type_script = "uid://dpn22j3ffxi6u"
 
-[node name="EnnemyDamage" type="Node" parent="StateMachine" index="4" unique_id=245023328 node_paths=PackedStringArray("ennemy")]
-script = ExtResource("7_xxgy3")
-ennemy = NodePath("../..")
-metadata/_custom_type_script = "uid://cfb4qpsdxsye2"
-
-[node name="EnnemyDeath" type="Node" parent="StateMachine" index="5" unique_id=975814222 node_paths=PackedStringArray("ennemy")]
+[node name="EnnemyDeath" type="Node" parent="StateMachine" index="3" unique_id=975814222 node_paths=PackedStringArray("ennemy")]
 script = ExtResource("8_nb8yi")
 ennemy = NodePath("../..")
 metadata/_custom_type_script = "uid://b5pwt83vfrgqi"

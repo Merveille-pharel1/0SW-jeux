@@ -20,15 +20,17 @@ func physics_update(delta: float) -> void:
 	if not anim_ennemy :
 		anim_ennemy = ennemy.get_animation_player()
 
-	if not ennemy._floor_detector.is_colliding() or ennemy.is_on_wall():
+	if ennemy.sees_player():
+		Transitioned.emit(self, "EnnemyChase")
+		return
+
+
+	if not ennemy.has_ground_ahead() or ennemy.is_on_wall():
 		ennemy.change_direction()
 
 	ennemy.velocity.x = ennemy.direction * move_speed
 
 	anim_ennemy.play("Patrol")
-
-	if ennemy._player_detector.is_colliding():
-		Transitioned.emit(self, "EnnemyVigilance")
 
 func exit() -> void:
 	ennemy.velocity.x = 0.0

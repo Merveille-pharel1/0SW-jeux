@@ -27,10 +27,12 @@ func physics_update(_delta: float) -> void:
 	var transitionAttack : bool = distance < 100 and ennemy._player_detector.is_colliding()
 	if transitionAttack:
 		Transitioned.emit(self, "EnnemyAttack")
+		return
 
 	var transitionChase := distance < distance_chase
 	if transitionChase:
 		Transitioned.emit(self, "EnnemyChase")
+		return
 
 	var transitionPatrol : bool = distance > 300 and !ennemy._player_detector.is_colliding()
 	if transitionPatrol:

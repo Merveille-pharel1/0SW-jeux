@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bm3lpjtldtj05" path="res://assets/sprites/levels/forest/arbres2.png" id="3_qbm50"]
 [ext_resource type="Texture2D" uid="uid://dv6qlclp1r1cf" path="res://assets/sprites/levels/forest/forest_tileset.png" id="5_ccmva"]
 [ext_resource type="PackedScene" uid="uid://rcp4myn248f2" path="res://scenes/portal.tscn" id="8_4fxds"]
-[ext_resource type="PackedScene" uid="uid://c0uqcwy5d5tlc" path="res://scenes/forest1.tscn" id="9_dkstm"]
+[ext_resource type="PackedScene" uid="uid://iof7sml8pu2y" path="res://scenes/laboratory_level.tscn" id="9_uwhs1"]
 [ext_resource type="PackedScene" uid="uid://ccskppbt0287x" path="res://scenes/moving_platform.tscn" id="10_adhun"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0hol4"]
@@ -805,17 +805,29 @@ duration = 4.0
 
 [node name="AntEnnemy" parent="Environment" unique_id=1928453538 instance=ExtResource("2_tpi6n")]
 position = Vector2(309, 260)
+ennemy_type = &""
+max_health = 100
+attack_range = 100.0
+lose_player_distance = 350.0
 
 [node name="AntEnnemy2" parent="Environment" unique_id=65247443 instance=ExtResource("2_tpi6n")]
 position = Vector2(3646, 201)
+ennemy_type = &""
+max_health = 100
+attack_range = 100.0
+lose_player_distance = 350.0
 
 [node name="AntEnnemy3" parent="Environment" unique_id=2095605302 instance=ExtResource("2_tpi6n")]
 position = Vector2(12128, 324)
+ennemy_type = &""
+max_health = 100
+attack_range = 100.0
+lose_player_distance = 350.0
 
 [node name="Portal" parent="Environment" unique_id=2055798605 instance=ExtResource("8_4fxds")]
 z_index = -1
 position = Vector2(13205, 278)
-next_scene = ExtResource("9_dkstm")
+next_scene = ExtResource("9_uwhs1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=634700226]
 
