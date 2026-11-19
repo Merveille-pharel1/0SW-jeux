@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://c7tuovfrnnlu0" path="res://assets/sprites/levels/laboratory/salle11-boss/04-grille-avant.png" id="22_pqtx2"]
 [ext_resource type="Texture2D" uid="uid://cgonja3nep6b8" path="res://assets/sprites/levels/laboratory/salle11-boss/05-linteau-fixe.png" id="23_pqtx2"]
 [ext_resource type="Texture2D" uid="uid://bpduyaugwursy" path="res://assets/sprites/levels/laboratory/sol.png" id="25_8dlr1"]
+[ext_resource type="PackedScene" uid="uid://ca4pfoqrf2uge" path="res://scenes/beetle_enemy.tscn" id="26_qgafj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
 size = Vector2(11493, 135)
@@ -395,6 +396,9 @@ z_index = 10
 position = Vector2(18044.5, 940.00006)
 scale = Vector2(0.673652, 0.8620692)
 texture = ExtResource("25_8dlr1")
+
+[node name="BeetleEnemy" parent="." unique_id=1928453538 instance=ExtResource("26_qgafj")]
+position = Vector2(717, 187)
 
 [connection signal="interact" from="InteractiveElements/InteractionBox" to="." method="_on_interaction_box_interact"]
 [connection signal="body_entered" from="InteractiveElements/Elevator/BoardingZone" to="." method="_on_boarding_zone_body_entered"]

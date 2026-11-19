@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://cv3bu2oh4pxq4"]
 
 [ext_resource type="PackedScene" uid="uid://cyujuybm5wskf" path="res://scenes/ennemy.tscn" id="1_undof"]
-[ext_resource type="Texture2D" uid="uid://dxoroesqiiyjw" path="res://assets/sprites/ennemies/ant_spritesheet.png" id="2_78fg7"]
+[ext_resource type="Texture2D" uid="uid://dxoroesqiiyjw" path="res://assets/sprites/ennemies/ennemis-terrestres/ant_spritesheet.png" id="2_78fg7"]
 [ext_resource type="Shader" uid="uid://bm03uqlvkhmd6" path="res://shaders/player_hit_flash.gdshader" id="2_j154y"]
 [ext_resource type="Script" uid="uid://beahysgbn8vl5" path="res://scripts/EnnemiesStates/AntStates/ant_patrol.gd" id="4_fibgs"]
 [ext_resource type="Script" uid="uid://bgypf1i2wu30h" path="res://scripts/EnnemiesStates/AntStates/ant_attack.gd" id="5_text3"]
 [ext_resource type="Script" uid="uid://dpn22j3ffxi6u" path="res://scripts/EnnemiesStates/AntStates/ant_chase.gd" id="6_x2gqv"]
 [ext_resource type="Script" uid="uid://b5pwt83vfrgqi" path="res://scripts/EnnemiesStates/AntStates/ant_death.gd" id="8_nb8yi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fibgs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j154y"]
 resource_local_to_scene = true
 shader = ExtResource("2_j154y")
 shader_parameter/hit_color = Color(1, 0.88, 0.88, 1)
@@ -154,7 +154,7 @@ attack_range = null
 lose_player_distance = null
 
 [node name="Icon" parent="." index="0" unique_id=1456242847]
-material = SubResource("ShaderMaterial_fibgs")
+material = SubResource("ShaderMaterial_j154y")
 position = Vector2(1, -1)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_78fg7")
