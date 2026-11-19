@@ -3,12 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://cyujuybm5wskf" path="res://scenes/ennemy.tscn" id="1_undof"]
 [ext_resource type="Texture2D" uid="uid://dxoroesqiiyjw" path="res://assets/sprites/ennemies/ennemis-terrestres/ant_spritesheet.png" id="2_78fg7"]
 [ext_resource type="Shader" uid="uid://bm03uqlvkhmd6" path="res://shaders/player_hit_flash.gdshader" id="2_j154y"]
-[ext_resource type="Script" uid="uid://beahysgbn8vl5" path="res://scripts/EnnemiesStates/AntStates/ant_patrol.gd" id="4_fibgs"]
-[ext_resource type="Script" uid="uid://bgypf1i2wu30h" path="res://scripts/EnnemiesStates/AntStates/ant_attack.gd" id="5_text3"]
-[ext_resource type="Script" uid="uid://dpn22j3ffxi6u" path="res://scripts/EnnemiesStates/AntStates/ant_chase.gd" id="6_x2gqv"]
-[ext_resource type="Script" uid="uid://b5pwt83vfrgqi" path="res://scripts/EnnemiesStates/AntStates/ant_death.gd" id="8_nb8yi"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j154y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78fg7"]
 resource_local_to_scene = true
 shader = ExtResource("2_j154y")
 shader_parameter/hit_color = Color(1, 0.88, 0.88, 1)
@@ -148,13 +144,11 @@ radius = 34.0
 height = 124.0
 
 [node name="AntEnnemy" unique_id=1928453538 instance=ExtResource("1_undof")]
-ennemy_type = null
-max_health = null
-attack_range = null
-lose_player_distance = null
+ennemy_type = &"Ground"
+direction = 1
 
 [node name="Icon" parent="." index="0" unique_id=1456242847]
-material = SubResource("ShaderMaterial_j154y")
+material = SubResource("ShaderMaterial_78fg7")
 position = Vector2(1, -1)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_78fg7")
@@ -168,28 +162,17 @@ shape = SubResource("CapsuleShape2D_fibgs")
 [node name="AnimationPlayer" parent="." index="2" unique_id=655448343]
 libraries/ = SubResource("AnimationLibrary_xxgy3")
 
-[node name="StateMachine" parent="." index="3" unique_id=532768462 node_paths=PackedStringArray("initial_state")]
-initial_state = NodePath("EnnemyPatrol")
-
-[node name="EnnemyPatrol" type="Node" parent="StateMachine" index="0" unique_id=2128995964 node_paths=PackedStringArray("ennemy")]
-script = ExtResource("4_fibgs")
+[node name="EnnemyAttack" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="0" unique_id=777975523 node_paths=PackedStringArray("ennemy")]
 ennemy = NodePath("../..")
-metadata/_custom_type_script = "uid://beahysgbn8vl5"
 
-[node name="EnnemyAttack" type="Node" parent="StateMachine" index="1" unique_id=1017221039 node_paths=PackedStringArray("ennemy")]
-script = ExtResource("5_text3")
+[node name="EnnemyChase" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="1" unique_id=1625240294 node_paths=PackedStringArray("ennemy")]
 ennemy = NodePath("../..")
-metadata/_custom_type_script = "uid://bgypf1i2wu30h"
 
-[node name="EnnemyChase" type="Node" parent="StateMachine" index="2" unique_id=684616567 node_paths=PackedStringArray("ennemy")]
-script = ExtResource("6_x2gqv")
+[node name="EnnemyDeath" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="2" unique_id=999997135 node_paths=PackedStringArray("ennemy")]
 ennemy = NodePath("../..")
-metadata/_custom_type_script = "uid://dpn22j3ffxi6u"
 
-[node name="EnnemyDeath" type="Node" parent="StateMachine" index="3" unique_id=975814222 node_paths=PackedStringArray("ennemy")]
-script = ExtResource("8_nb8yi")
+[node name="EnnemyPatrol" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="3" unique_id=1838267013 node_paths=PackedStringArray("ennemy")]
 ennemy = NodePath("../..")
-metadata/_custom_type_script = "uid://b5pwt83vfrgqi"
 
 [node name="PlayerDetector" parent="." index="4" unique_id=918879480]
 position = Vector2(0, 20)

@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://cgonja3nep6b8" path="res://assets/sprites/levels/laboratory/salle11-boss/05-linteau-fixe.png" id="23_pqtx2"]
 [ext_resource type="Texture2D" uid="uid://bpduyaugwursy" path="res://assets/sprites/levels/laboratory/sol.png" id="25_8dlr1"]
 [ext_resource type="PackedScene" uid="uid://ca4pfoqrf2uge" path="res://scenes/beetle_enemy.tscn" id="26_qgafj"]
+[ext_resource type="PackedScene" uid="uid://d0dku3ei5e0cm" path="res://scenes/geometer_moth.tscn" id="27_wog3w"]
+[ext_resource type="PackedScene" uid="uid://bc2qjah2k64tx" path="res://scenes/assassin_bug_ennemy.tscn" id="28_x0sxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
 size = Vector2(11493, 135)
@@ -398,7 +400,14 @@ scale = Vector2(0.673652, 0.8620692)
 texture = ExtResource("25_8dlr1")
 
 [node name="BeetleEnemy" parent="." unique_id=1928453538 instance=ExtResource("26_qgafj")]
-position = Vector2(717, 187)
+position = Vector2(719, -86)
+
+[node name="GeometerMoth" parent="." unique_id=2025858629 instance=ExtResource("27_wog3w")]
+position = Vector2(1830, -67)
+
+[node name="AssassinBugEnnemy" parent="." unique_id=95642106 instance=ExtResource("28_x0sxu")]
+position = Vector2(2691, 171)
+ennemy_type = "Ground"
 
 [connection signal="interact" from="InteractiveElements/InteractionBox" to="." method="_on_interaction_box_interact"]
 [connection signal="body_entered" from="InteractiveElements/Elevator/BoardingZone" to="." method="_on_boarding_zone_body_entered"]

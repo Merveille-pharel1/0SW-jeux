@@ -9,20 +9,21 @@ extends CharacterBody2D
 @onready var hitbox: Hitbox = $EnnemyHitbox
 @onready var hurtbox: Hurtbox = $EnnemyHurtbox
 
-@export var ennemy_type : StringName
+@export_enum("Ground", "Aerial") var ennemy_type : String = "Ground"
 @export var max_health: int = 100
 @export var attack_range: float = 100.0
 @export var lose_player_distance: float = 350.0
+@export_enum("Gauche:-1", "Droite:1") var direction := -1 
 
 signal hit_received(amount: int)
 
 var player: Player
-var direction := 1 
 var health: int
 var pending_damage: int = 0
 var hitbox_offset_x: float
 var hit_material: ShaderMaterial
 var hit_tween: Tween
+var patrol_origin: Vector2
 
 func _ready() -> void:
 	health = max_health
@@ -34,9 +35,15 @@ func _ready() -> void:
 	hurtbox.damage_received.connect(receive_hit)
 	player = get_tree().get_first_node_in_group("player") as Player
 
+	if _floor_detector != null:
+		_floor_detector.enabled = not is_aerial()
 
 
 func _physics_process(delta: float) -> void:
+
+	if not is_aerial() and not is_on_floor():
+		velocity += get_gravity() * delta
+
 	move_and_slide()
 	
 
@@ -63,6 +70,10 @@ func get_direction_to_player() -> Vector2:
 		return Vector2.ZERO
 
 	return global_position.direction_to(player.global_position)
+
+
+func is_aerial() -> bool:
+	return ennemy_type == "Aerial"
 
 func sees_player() -> bool:
 	var target := get_player()
@@ -103,6 +114,12 @@ func face_player() -> void:
 
 
 func has_ground_ahead() -> bool:
+	if is_aerial():
+		return true
+
+	if _floor_detector == null:
+		return true
+
 	return _floor_detector.is_colliding()
 
 
@@ -110,12 +127,15 @@ func change_direction() -> void:
 	direction *= -1
 	_sprite.flip_h = !_sprite.flip_h 
 
-	_floor_detector.target_position.x *= -1
-	_player_detector.target_position.x *= -1
 	hitbox.position.x = hitbox_offset_x * direction
 
-	_floor_detector.force_raycast_update()
+	_player_detector.target_position.x *= -1
 	_player_detector.force_raycast_update()
+
+	if _floor_detector != null and _floor_detector.enabled:
+		_floor_detector.target_position.x *= -1
+		_floor_detector.force_raycast_update()
+
 
 
 func get_type() -> StringName:
@@ -137,6 +157,9 @@ func receive_hit(amount: int) -> void:
 		_state_machine.on_child_transition(_state_machine.current_state, "EnnemyDeath")
 	else:
 		play_damage_flash()
+
+	if not sees_player():
+		change_direction()
 
 	hit_received.emit(amount)
 

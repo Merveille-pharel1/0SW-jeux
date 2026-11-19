@@ -5,6 +5,10 @@
 [ext_resource type="Shader" uid="uid://bm03uqlvkhmd6" path="res://shaders/player_hit_flash.gdshader" id="2_batjq"]
 [ext_resource type="PackedScene" uid="uid://dbkd147286e86" path="res://scenes/hitbox.tscn" id="3_n4lfa"]
 [ext_resource type="PackedScene" uid="uid://dlhx7v8p5skdf" path="res://scenes/hurtbox.tscn" id="4_batjq"]
+[ext_resource type="Script" uid="uid://bgypf1i2wu30h" path="res://scripts/EnnemiesStates/AntStates/ant_attack.gd" id="4_hkdl5"]
+[ext_resource type="Script" uid="uid://dpn22j3ffxi6u" path="res://scripts/EnnemiesStates/AntStates/ant_chase.gd" id="5_svqgc"]
+[ext_resource type="Script" uid="uid://b5pwt83vfrgqi" path="res://scripts/EnnemiesStates/AntStates/ant_death.gd" id="6_gm5vn"]
+[ext_resource type="Script" uid="uid://beahysgbn8vl5" path="res://scripts/EnnemiesStates/AntStates/ant_patrol.gd" id="7_nuyak"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f1ej7"]
 resource_local_to_scene = true
@@ -23,8 +27,25 @@ material = SubResource("ShaderMaterial_f1ej7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=655448343]
 
-[node name="StateMachine" type="Node" parent="." unique_id=532768462]
+[node name="StateMachine" type="Node" parent="." unique_id=532768462 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_7waic")
+initial_state = NodePath("EnnemyPatrol")
+
+[node name="EnnemyAttack" type="Node" parent="StateMachine" unique_id=777975523]
+script = ExtResource("4_hkdl5")
+metadata/_custom_type_script = "uid://bgypf1i2wu30h"
+
+[node name="EnnemyChase" type="Node" parent="StateMachine" unique_id=1625240294]
+script = ExtResource("5_svqgc")
+metadata/_custom_type_script = "uid://dpn22j3ffxi6u"
+
+[node name="EnnemyDeath" type="Node" parent="StateMachine" unique_id=999997135]
+script = ExtResource("6_gm5vn")
+metadata/_custom_type_script = "uid://b5pwt83vfrgqi"
+
+[node name="EnnemyPatrol" type="Node" parent="StateMachine" unique_id=1838267013]
+script = ExtResource("7_nuyak")
+metadata/_custom_type_script = "uid://beahysgbn8vl5"
 
 [node name="PlayerDetector" type="RayCast2D" parent="." unique_id=918879480]
 target_position = Vector2(200, 0)

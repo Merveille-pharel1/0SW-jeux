@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://bc2qjah2k64tx"]
+
+[ext_resource type="PackedScene" uid="uid://cyujuybm5wskf" path="res://scenes/ennemy.tscn" id="1_jvprd"]
+[ext_resource type="Shader" uid="uid://bm03uqlvkhmd6" path="res://shaders/player_hit_flash.gdshader" id="2_nk7op"]
+[ext_resource type="Texture2D" uid="uid://k7prlmasab2h" path="res://assets/sprites/ennemies/ennemis-terrestres/reduve-duelliste-8poses.png" id="3_nk7op"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nk7op"]
+resource_local_to_scene = true
+shader = ExtResource("2_nk7op")
+shader_parameter/hit_color = Color(1, 0.88, 0.88, 1)
+shader_parameter/hit_strength = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhlln"]
+size = Vector2(50, 79)
+
+[sub_resource type="Animation" id="Animation_jvprd"]
+resource_name = "Attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.23333333, 0.26666668, 0.46666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_fvjug"]
+resource_name = "Chase"
+length = 0.533
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_nk7op"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.3, 0.6, 0.73333335, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3), Vector2i(6, 3), Vector2i(7, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_wxi71"]
+resource_name = "Idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.43333334, 0.6333333, 0.8, 0.93333334, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_k7sek"]
+resource_name = "Patrol"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.33333334, 0.46666667, 0.6, 0.73333335, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_0rj6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0rj6i"]
+_data = {
+&"Attack": SubResource("Animation_jvprd"),
+&"Chase": SubResource("Animation_fvjug"),
+&"Death": SubResource("Animation_nk7op"),
+&"Idle": SubResource("Animation_wxi71"),
+&"Patrol": SubResource("Animation_k7sek"),
+&"RESET": SubResource("Animation_0rj6i")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
+size = Vector2(49, 23)
+
+[node name="AssassinBugEnnemy" unique_id=1928453538 instance=ExtResource("1_jvprd")]
+ennemy_type = &"Ground"
+
+[node name="Icon" parent="." index="0" unique_id=1456242847]
+material = SubResource("ShaderMaterial_nk7op")
+texture = ExtResource("3_nk7op")
+hframes = 8
+vframes = 4
+frame = 24
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2091979700]
+position = Vector2(15, 20.5)
+shape = SubResource("RectangleShape2D_yhlln")
+
+[node name="AnimationPlayer" parent="." index="2" unique_id=655448343]
+libraries/ = SubResource("AnimationLibrary_0rj6i")
+
+[node name="EnnemyAttack" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="0" unique_id=777975523 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="EnnemyChase" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="1" unique_id=1625240294 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="EnnemyDeath" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="2" unique_id=999997135 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="EnnemyPatrol" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="3" unique_id=1838267013 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="PlayerDetector" parent="." index="4" unique_id=918879480]
+target_position = Vector2(-200, 0)
+
+[node name="FloorDectector" parent="." index="5" unique_id=1191371614]
+target_position = Vector2(-56, 66)
+
+[node name="EnnemyHitbox" parent="." index="6" unique_id=38431740]
+position = Vector2(-34.5, 17.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHitbox" index="0" unique_id=1060074608]
+shape = SubResource("RectangleShape2D_jckq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHurtbox" parent_id_path=PackedInt32Array(339930457) index="0" unique_id=701050685]
+position = Vector2(15, 20.5)
+shape = SubResource("RectangleShape2D_yhlln")

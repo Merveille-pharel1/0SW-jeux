@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://cxeyxndwgxaxo"]
+
+[ext_resource type="PackedScene" uid="uid://cyujuybm5wskf" path="res://scenes/ennemy.tscn" id="1_he804"]
+[ext_resource type="Shader" uid="uid://bm03uqlvkhmd6" path="res://shaders/player_hit_flash.gdshader" id="2_yhlln"]
+[ext_resource type="Texture2D" uid="uid://db5js7g3kulry" path="res://assets/sprites/ennemies/ennemis-terrestres/termite-resinier-8poses.png" id="3_yhlln"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhlln"]
+resource_local_to_scene = true
+shader = ExtResource("2_yhlln")
+shader_parameter/hit_color = Color(1, 0.88, 0.88, 1)
+shader_parameter/hit_strength = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ressj"]
+size = Vector2(79, 90)
+
+[sub_resource type="Animation" id="Animation_he804"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_njqbr"]
+resource_name = "Chase"
+length = 0.533
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.4, 0.46666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_yhlln"]
+resource_name = "Death"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.46666667, 0.6333333, 0.8, 0.9333334, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_bew0w"]
+resource_name = "Idle"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.56666666, 0.73333335, 0.9, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_rskni"]
+resource_name = "Patrol"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.33333334, 0.46666667, 0.6, 0.73333335, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_5qnh8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qnh8"]
+_data = {
+&"Attack": SubResource("Animation_he804"),
+&"Chase": SubResource("Animation_njqbr"),
+&"Death": SubResource("Animation_yhlln"),
+&"Idle": SubResource("Animation_bew0w"),
+&"Patrol": SubResource("Animation_rskni"),
+&"RESET": SubResource("Animation_5qnh8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71xte"]
+size = Vector2(26.215332, 40.057964)
+
+[node name="TermiteEnnemy" unique_id=1928453538 instance=ExtResource("1_he804")]
+ennemy_type = &"Ground"
+
+[node name="Icon" parent="." index="0" unique_id=1456242847]
+material = SubResource("ShaderMaterial_yhlln")
+texture = ExtResource("3_yhlln")
+hframes = 8
+vframes = 4
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2091979700]
+position = Vector2(2.5, 11)
+shape = SubResource("RectangleShape2D_ressj")
+
+[node name="AnimationPlayer" parent="." index="2" unique_id=655448343]
+libraries/ = SubResource("AnimationLibrary_5qnh8")
+
+[node name="EnnemyAttack" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="0" unique_id=777975523 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="EnnemyChase" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="1" unique_id=1625240294 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="EnnemyDeath" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="2" unique_id=999997135 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="EnnemyPatrol" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="3" unique_id=1838267013 node_paths=PackedStringArray("ennemy")]
+ennemy = NodePath("../..")
+
+[node name="PlayerDetector" parent="." index="4" unique_id=918879480]
+target_position = Vector2(-200, 0)
+
+[node name="FloorDectector" parent="." index="5" unique_id=1191371614]
+target_position = Vector2(-65, 65)
+
+[node name="EnnemyHitbox" parent="." index="6" unique_id=38431740]
+position = Vector2(-45, 6.028982)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHitbox" index="0" unique_id=692018746]
+shape = SubResource("RectangleShape2D_71xte")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHurtbox" parent_id_path=PackedInt32Array(339930457) index="0" unique_id=1466200204]
+position = Vector2(2.5, 11)
+shape = SubResource("RectangleShape2D_ressj")

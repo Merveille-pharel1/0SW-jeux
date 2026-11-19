@@ -20,11 +20,6 @@ func handle_inputs(input_event: InputEvent) -> void :
 
 func physics_update(delta: float) -> void:
 
-	# if ennemy.get_type() == "Aerian":
-	# 	ennemy.velocity = direction * chase_speed 
-	# else:	
-	# 	ennemy.velocity.x = direction.x * chase_speed
-
 	var target := ennemy.get_player()
 
 	if target == null:
@@ -57,7 +52,10 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit(self, "EnnemyPatrol")
 		return
 
-	ennemy.velocity.x = signf(offset.x) * chase_speed
+	if ennemy.is_aerial():
+		ennemy.velocity = offset.normalized() * chase_speed
+	else:
+		ennemy.velocity.x = signf(offset.x) * chase_speed
 
 func exit() -> void:
 	ennemy.velocity = Vector2.ZERO
