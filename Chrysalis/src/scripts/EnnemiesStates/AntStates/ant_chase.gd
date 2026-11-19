@@ -59,3 +59,6 @@ func physics_update(delta: float) -> void:
 
 func exit() -> void:
 	ennemy.velocity = Vector2.ZERO
+
+	if ennemy.is_aerial():
+		ennemy.velocity.y = 0.0

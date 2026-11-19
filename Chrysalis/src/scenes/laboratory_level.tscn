@@ -403,10 +403,10 @@ texture = ExtResource("25_8dlr1")
 position = Vector2(719, -86)
 
 [node name="GeometerMoth" parent="." unique_id=2025858629 instance=ExtResource("27_wog3w")]
-position = Vector2(1830, -67)
+position = Vector2(2479, -112)
 
 [node name="AssassinBugEnnemy" parent="." unique_id=95642106 instance=ExtResource("28_x0sxu")]
-position = Vector2(2691, 171)
+position = Vector2(3728, 169)
 ennemy_type = "Ground"
 
 [connection signal="interact" from="InteractiveElements/InteractionBox" to="." method="_on_interaction_box_interact"]

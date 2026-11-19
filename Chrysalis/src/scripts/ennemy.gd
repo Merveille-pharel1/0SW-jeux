@@ -14,6 +14,7 @@ extends CharacterBody2D
 @export var attack_range: float = 100.0
 @export var lose_player_distance: float = 350.0
 @export_enum("Gauche:-1", "Droite:1") var direction := -1 
+@export var patrol_radius: float = 300.0
 
 signal hit_received(amount: int)
 
@@ -24,6 +25,8 @@ var hitbox_offset_x: float
 var hit_material: ShaderMaterial
 var hit_tween: Tween
 var patrol_origin: Vector2
+var left_limit := 0.0
+var right_limit := 0.0
 
 func _ready() -> void:
 	health = max_health
@@ -37,6 +40,12 @@ func _ready() -> void:
 
 	if _floor_detector != null:
 		_floor_detector.enabled = not is_aerial()
+
+	patrol_origin = global_position
+
+	left_limit = patrol_origin.x - patrol_radius
+	right_limit = patrol_origin.x + patrol_radius
+
 
 
 func _physics_process(delta: float) -> void:
@@ -81,10 +90,13 @@ func sees_player() -> bool:
 		return false
 
 	var collider := _player_detector.get_collider() as Node
-	if collider == null:
-		return false
+	
+	if not is_aerial():
+		return collider != null and (collider == target or target.is_ancestor_of(collider))
+	else: 
+		
+		return get_distance_to_player() < patrol_radius
 
-	return collider == target or target.is_ancestor_of(collider)
 
 
 func can_attack_player() -> bool:
