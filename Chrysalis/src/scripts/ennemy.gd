@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var _player_detector = $PlayerDetector
 @onready var hitbox: Hitbox = $EnnemyHitbox
 @onready var hurtbox: Hurtbox = $EnnemyHurtbox
+@onready var health_bar: TextureProgressBar = $HealthBar.health_bar
 
 @export_enum("Ground", "Aerial") var ennemy_type : String = "Ground"
 @export var max_health: int = 100
@@ -30,6 +31,8 @@ var right_limit := 0.0
 
 func _ready() -> void:
 	health = max_health
+	health_bar.max_value = max_health
+	health_bar.value = health
 
 	hitbox_offset_x = absf(hitbox.position.x)
 
@@ -158,8 +161,12 @@ func receive_hit(amount: int) -> void:
 		return
 
 	health = maxi(health - amount, 0)
+	health_bar.value = health
+
 
 	if health == 0:
+		health_bar.hide()
+
 		if hit_tween:
 			hit_tween.kill()
 

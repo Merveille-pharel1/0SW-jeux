@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://q2gb1jped20i"]
+
+[node name="EnemyHealtBar" type="Control" unique_id=23628616]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 12.0
+mouse_filter = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1117831914]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

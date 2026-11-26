@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://jn1jr0r4yp5j" path="res://scripts/state_machine.gd" id="1_7waic"]
 [ext_resource type="Script" uid="uid://bxwe4flral6t" path="res://scripts/ennemy.gd" id="1_614tr"]
 [ext_resource type="Shader" uid="uid://bm03uqlvkhmd6" path="res://shaders/player_hit_flash.gdshader" id="2_batjq"]
+[ext_resource type="PackedScene" uid="uid://cu0o27q1mndvm" path="res://scenes/enemy_health_bar_root.tscn" id="2_gm5vn"]
 [ext_resource type="PackedScene" uid="uid://dbkd147286e86" path="res://scenes/hitbox.tscn" id="3_n4lfa"]
 [ext_resource type="PackedScene" uid="uid://dlhx7v8p5skdf" path="res://scenes/hurtbox.tscn" id="4_batjq"]
 [ext_resource type="Script" uid="uid://bgypf1i2wu30h" path="res://scripts/EnnemiesStates/AntStates/ant_attack.gd" id="4_hkdl5"]
@@ -19,6 +20,11 @@ shader_parameter/hit_strength = 0.0
 [node name="Ennemy" type="CharacterBody2D" unique_id=1928453538]
 position = Vector2(-2, 2)
 script = ExtResource("1_614tr")
+
+[node name="HealthBar" parent="." unique_id=778722980 instance=ExtResource("2_gm5vn")]
+z_index = 20
+position = Vector2(0, -70)
+gap = 6.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1456242847]
 material = SubResource("ShaderMaterial_f1ej7")

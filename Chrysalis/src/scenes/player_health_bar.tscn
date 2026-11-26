@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cw2ri7xvdvyp8"]
+
+[ext_resource type="Texture2D" uid="uid://c6s2vmiodwd4l" path="res://assets/sprites/HealthBars/Noe/under.png" id="1_ujpt8"]
+[ext_resource type="Texture2D" uid="uid://dhdgo4bmaxo4p" path="res://assets/sprites/HealthBars/Noe/over.png" id="2_temqn"]
+[ext_resource type="Texture2D" uid="uid://kvpn7a8qa8vv" path="res://assets/sprites/HealthBars/Noe/progress.png" id="3_orymg"]
+
+[node name="PlayerHealthBar" type="TextureProgressBar" unique_id=1487019458]
+offset_right = 517.0
+offset_bottom = 62.0
+scale = Vector2(0.9, 1.15)
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("1_ujpt8")
+texture_over = ExtResource("2_temqn")
+texture_progress = ExtResource("3_orymg")
+texture_progress_offset = Vector2(50, 23)
