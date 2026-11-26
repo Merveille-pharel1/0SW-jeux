@@ -24,6 +24,7 @@ script = ExtResource("1_614tr")
 [node name="HealthBar" parent="." unique_id=778722980 instance=ExtResource("2_gm5vn")]
 z_index = 20
 position = Vector2(0, -70)
+gap = 6.0
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1456242847]
 material = SubResource("ShaderMaterial_f1ej7")

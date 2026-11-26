@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://dn33dgbwyjpgw" path="res://scripts/playerStates/player_fly.gd" id="10_y4r1p"]
 [ext_resource type="Script" uid="uid://cklqklvptuxbo" path="res://scripts/playerStates/player_death.gd" id="14_oprun"]
 
+[ext_resource type="PackedScene" path="res://scenes/player_hud.tscn" id="20_player_hud"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dlr1"]
 resource_local_to_scene = true
 shader = ExtResource("2_oprun")
@@ -313,3 +315,5 @@ metadata/_custom_type_script = "uid://dn33dgbwyjpgw"
 script = ExtResource("14_oprun")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://cklqklvptuxbo"
+
+[node name="PlayerHUD" parent="." instance=ExtResource("20_player_hud")]

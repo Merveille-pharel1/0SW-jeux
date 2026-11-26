@@ -126,17 +126,20 @@ size = Vector2(30.600677, 56)
 [node name="GeometerMoth" unique_id=1928453538 instance=ExtResource("1_m261u")]
 ennemy_type = "Aerial"
 
-[node name="Icon" parent="." index="0" unique_id=1456242847]
+[node name="HealthBar" parent="." index="0" unique_id=778722980]
+gap = 0.0
+
+[node name="Icon" parent="." index="1" unique_id=1456242847]
 material = SubResource("ShaderMaterial_d2rf4")
 texture = ExtResource("3_d2rf4")
 hframes = 8
 vframes = 4
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=2091979700]
+[node name="CollisionShape2D" parent="." index="2" unique_id=2091979700]
 position = Vector2(9.5, -0.5)
 shape = SubResource("RectangleShape2D_d2rf4")
 
-[node name="AnimationPlayer" parent="." index="2" unique_id=655448343]
+[node name="AnimationPlayer" parent="." index="3" unique_id=655448343]
 libraries/ = SubResource("AnimationLibrary_7s58j")
 
 [node name="EnnemyAttack" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="0" unique_id=777975523 node_paths=PackedStringArray("ennemy")]
@@ -151,13 +154,13 @@ ennemy = NodePath("../..")
 [node name="EnnemyPatrol" parent="StateMachine" parent_id_path=PackedInt32Array(532768462) index="3" unique_id=1838267013 node_paths=PackedStringArray("ennemy")]
 ennemy = NodePath("../..")
 
-[node name="PlayerDetector" parent="." index="4" unique_id=918879480]
+[node name="PlayerDetector" parent="." index="5" unique_id=918879480]
 target_position = Vector2(-200, 0)
 
-[node name="FloorDectector" parent="." index="5" unique_id=1191371614]
+[node name="FloorDectector" parent="." index="6" unique_id=1191371614]
 target_position = Vector2(-64, 39)
 
-[node name="EnnemyHitbox" parent="." index="6" unique_id=38431740]
+[node name="EnnemyHitbox" parent="." index="7" unique_id=38431740]
 position = Vector2(-45.30034, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnnemyHitbox" index="0" unique_id=463888620]

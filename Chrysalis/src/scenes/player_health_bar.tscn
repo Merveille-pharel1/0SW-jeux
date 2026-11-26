@@ -7,7 +7,7 @@
 [node name="PlayerHealthBar" type="TextureProgressBar" unique_id=1487019458]
 offset_right = 517.0
 offset_bottom = 62.0
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.9, 1.15)
 mouse_filter = 2
 value = 100.0
 texture_under = ExtResource("1_ujpt8")

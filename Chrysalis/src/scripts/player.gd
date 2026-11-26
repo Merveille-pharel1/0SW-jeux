@@ -10,10 +10,15 @@ extends CharacterBody2D
 @export var max_health: int = 100
 
 signal hit_received(amount: int)
+signal health_changed(current_health: int, maximum_health: int)
 
 const unAppliedGravityState := ["PlayerFly", "PlayerAttack", "PlayerDashAttack"]
 
-var health: int
+var health: int = 0:
+	set(new_health):
+		health = clampi(new_health, 0, maxi(max_health, 0))
+		health_changed.emit(health, max_health)
+		
 var pending_damage: int = 0
 var hitbox_offset_x: float
 var facing_direction: float = 1.0
@@ -64,7 +69,8 @@ func receive_hit(amount: int) -> void:
 		if hit_tween:
 			hit_tween.kill()
 
-		hit_material.set_shader_parameter("hit_strength", 0.0)
+		if hit_material:
+			hit_material.set_shader_parameter("hit_strength", 0.0)
 		_state_machine.on_child_transition(_state_machine.current_state, "PlayerDeath")
 	else:
 		play_damage_flash()
@@ -73,6 +79,9 @@ func receive_hit(amount: int) -> void:
 
 
 func play_damage_flash() -> void:
+	if hit_material == null:
+		return
+
 	if hit_tween:
 		hit_tween.kill()
 
