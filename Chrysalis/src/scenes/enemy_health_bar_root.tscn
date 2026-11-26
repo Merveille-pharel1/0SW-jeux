@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cu0o27q1mndvm"]
+
+[ext_resource type="Script" uid="uid://g84qdlgiky54" path="res://scripts/enemy_health_bar_root.gd" id="1_jwjbx"]
+[ext_resource type="Texture2D" uid="uid://b0xfkpci23pg5" path="res://assets/sprites/HealthBars/Ennemi/under.png" id="2_mi2nn"]
+[ext_resource type="Texture2D" uid="uid://ckxqstg5f1gv2" path="res://assets/sprites/HealthBars/Ennemi/over.png" id="3_8yy8d"]
+[ext_resource type="Texture2D" uid="uid://qws42gwkp5m3" path="res://assets/sprites/HealthBars/Ennemi/progress.png" id="4_sy8v5"]
+
+[node name="EnemyHealtBarRoot" type="Node2D" unique_id=2035535606]
+script = ExtResource("1_jwjbx")
+
+[node name="HealthBar" type="TextureProgressBar" parent="." unique_id=778722980]
+offset_right = 488.0
+offset_bottom = 38.0
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+value = 100.0
+texture_under = ExtResource("2_mi2nn")
+texture_over = ExtResource("3_8yy8d")
+texture_progress = ExtResource("4_sy8v5")
+texture_progress_offset = Vector2(26, 5)
