@@ -4,7 +4,7 @@ var forest_level: PackedScene = preload("res://scenes/forest_level.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Audio.play_music(&"MenuAudio")
+	Audio.play_music(&"MenuAudio", 4)
 	var playButton := get_node("UI/MenuButtons/PlayButton")
 
 	var buttons := get_node("UI/MenuButtons").get_children()
@@ -20,6 +20,7 @@ func _ready() -> void:
 			button.focus_exited.connect(buttonUnselected.bind(button, normal_texture))
 
 	playButton.grab_focus()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

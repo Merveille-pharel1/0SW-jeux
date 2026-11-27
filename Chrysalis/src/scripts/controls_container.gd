@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not waiting_for_input:
+	if not is_visible_in_tree() or not waiting_for_input:
 		return
 
 	if modeControl == "keyboard" and not keyboardFilter(event):
@@ -242,6 +242,8 @@ func clearAllControls() -> void:
 
 
 func reinitialize() -> void:
+	cancel_rebinding()
+	controls = getControls()
 	clearAllControls()
 	action_to_rebind= &""
 	old_event = null
@@ -250,7 +252,13 @@ func reinitialize() -> void:
 
 
 func update_font_weight(button: Button) -> void:
-	var font = button.get_theme_font("font")
+	var base_font := button.get_theme_font("font")
+	var font: FontVariation
+	if base_font is FontVariation:
+		font = base_font.duplicate() as FontVariation
+	else:
+		font = FontVariation.new()
+		font.base_font = base_font
 
 	font.variation_embolden = 0.8 if button.button_pressed else 0.0
 	button.add_theme_font_override("font", font)
@@ -291,3 +299,16 @@ func load_controls() -> void:
 		for event in events:
 			InputMap.action_add_event(action, event)
 #endregion
+
+
+func cancel_rebinding() -> void:
+	if waiting_for_input and is_instance_valid(current_button):
+		current_button.text = old_event.as_text() if old_event != null else "[vide]"
+		current_button.button_pressed = false
+	waiting_for_input = false
+	action_to_rebind = &""
+	old_event = null
+	current_button = null
+	if buttons_group != null:
+		for button in buttons_group.get_buttons():
+			button.disabled = false

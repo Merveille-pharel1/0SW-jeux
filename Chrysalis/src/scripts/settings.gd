@@ -1,8 +1,12 @@
 extends Control
 
-@onready var settingsContainer:  = %SettingsContainer
+@onready var settingsContainer: VBoxContainer = %SettingsContainer
 @onready var selectedSetting: VBoxContainer = %RightPanel/MarginContainer/SelectedSetting
 @onready var selectedTitle: Label = selectedSetting.get_node("SelectedTitle")
+
+signal closed
+
+@export var embedded_mode: bool = false
 
 @export var game_difficulty: String = "Normal"
 
@@ -15,7 +19,8 @@ const TABS := {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show_tab("AudioButton")
-	settingsContainer.get_node("AudioButton").grab_focus()
+	if not embedded_mode:
+		settingsContainer.get_node("AudioButton").grab_focus()
 
 	for button_name in TABS:
 		var button: TextureButton = settingsContainer.get_node(button_name)
@@ -43,8 +48,12 @@ func show_tab(button_name: String) -> void:
 		selectedSetting.get_node(tab[1]).visible = (tab[1] == info[1])
 
 func _on_return_button_pressed() -> void:
-	Audio.save_volumes()
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	if embedded_mode:
+		close()
+	else:
+		Audio.save_volumes()
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
 #region DifficultySetting
@@ -59,3 +68,25 @@ func _on_difficult_button_pressed() -> void:
 	game_difficulty = "Difficult"
 
 #endregion
+
+
+# Utilisation depuis le menu pause, sans remplacer le niveau courant.
+func open() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	show()
+	show_tab("AudioButton")
+	settingsContainer.get_node("AudioButton").grab_focus()
+
+
+func close() -> void:
+	Audio.save_volumes()
+	var controls := selectedSetting.get_node("ControlsContainer")
+	controls.cancel_rebinding()
+	hide()
+	if embedded_mode:
+		process_mode = Node.PROCESS_MODE_DISABLED
+	closed.emit()
+
+
+func is_rebinding() -> bool:
+	return selectedSetting.get_node("ControlsContainer").waiting_for_input

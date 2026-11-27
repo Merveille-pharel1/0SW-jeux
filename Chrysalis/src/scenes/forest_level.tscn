@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://5m8pdymr8fs5"]
 
 [ext_resource type="PackedScene" uid="uid://bqh3urv6c4kv8" path="res://scenes/player.tscn" id="1_3dmh2"]
+[ext_resource type="Script" uid="uid://m5u84k6jx5lp" path="res://scripts/forest_level.gd" id="1_qbm50"]
 [ext_resource type="Texture2D" uid="uid://3855a8sqqaag" path="res://assets/sprites/levels/forest/mountains2.png" id="1_uwhs1"]
 [ext_resource type="Shader" uid="uid://bru0abmkvw7e2" path="res://shaders/tree_background.gdshader" id="2_adhun"]
 [ext_resource type="PackedScene" uid="uid://cv3bu2oh4pxq4" path="res://scenes/ant_ennemy.tscn" id="2_tpi6n"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://rcp4myn248f2" path="res://scenes/portal.tscn" id="8_4fxds"]
 [ext_resource type="PackedScene" uid="uid://iof7sml8pu2y" path="res://scenes/laboratory_level.tscn" id="9_uwhs1"]
 [ext_resource type="PackedScene" uid="uid://ccskppbt0287x" path="res://scenes/moving_platform.tscn" id="10_adhun"]
+[ext_resource type="PackedScene" uid="uid://c27f61xgwp0y3" path="res://scenes/pause_menu.tscn" id="10_qbm50"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0hol4"]
 shader = ExtResource("2_adhun")
@@ -756,6 +758,7 @@ sources/0 = SubResource("TileSetAtlasSource_fws66")
 size = Vector2(12013, 20)
 
 [node name="ForestLevel" type="Node2D" unique_id=904815355]
+script = ExtResource("1_qbm50")
 
 [node name="MountainParallax" type="Parallax2D" parent="." unique_id=624194685]
 z_index = -30
@@ -806,23 +809,14 @@ duration = 4.0
 [node name="AntEnnemy" parent="Environment" unique_id=1928453538 instance=ExtResource("2_tpi6n")]
 position = Vector2(309, 260)
 ennemy_type = &""
-max_health = 100
-attack_range = 100.0
-lose_player_distance = 350.0
 
 [node name="AntEnnemy2" parent="Environment" unique_id=65247443 instance=ExtResource("2_tpi6n")]
 position = Vector2(3646, 201)
 ennemy_type = &""
-max_health = 100
-attack_range = 100.0
-lose_player_distance = 350.0
 
 [node name="AntEnnemy3" parent="Environment" unique_id=2095605302 instance=ExtResource("2_tpi6n")]
 position = Vector2(12128, 324)
 ennemy_type = &""
-max_health = 100
-attack_range = 100.0
-lose_player_distance = 350.0
 
 [node name="Portal" parent="Environment" unique_id=2055798605 instance=ExtResource("8_4fxds")]
 z_index = -1
@@ -830,7 +824,10 @@ position = Vector2(13205, 278)
 next_scene = ExtResource("9_uwhs1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=634700226]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=914491969]
 position = Vector2(5996.5, 0)
 shape = SubResource("RectangleShape2D_71xte")
+
+[node name="PauseMenu" parent="." unique_id=1255147010 instance=ExtResource("10_qbm50")]

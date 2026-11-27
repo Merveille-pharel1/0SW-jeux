@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://ca4pfoqrf2uge" path="res://scenes/beetle_enemy.tscn" id="26_qgafj"]
 [ext_resource type="PackedScene" uid="uid://d0dku3ei5e0cm" path="res://scenes/geometer_moth.tscn" id="27_wog3w"]
 [ext_resource type="PackedScene" uid="uid://bc2qjah2k64tx" path="res://scenes/assassin_bug_ennemy.tscn" id="28_x0sxu"]
+[ext_resource type="PackedScene" uid="uid://c27f61xgwp0y3" path="res://scenes/pause_menu.tscn" id="29_gg7bu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jckq6"]
 size = Vector2(11493, 135)
@@ -408,6 +409,8 @@ position = Vector2(2479, -112)
 [node name="AssassinBugEnnemy" parent="." unique_id=95642106 instance=ExtResource("28_x0sxu")]
 position = Vector2(3728, 169)
 ennemy_type = "Ground"
+
+[node name="PauseMenu" parent="." unique_id=1255147010 instance=ExtResource("29_gg7bu")]
 
 [connection signal="interact" from="InteractiveElements/InteractionBox" to="." method="_on_interaction_box_interact"]
 [connection signal="body_entered" from="InteractiveElements/Elevator/BoardingZone" to="." method="_on_boarding_zone_body_entered"]
