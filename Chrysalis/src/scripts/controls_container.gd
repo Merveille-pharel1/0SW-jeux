@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal controls_rebuilt
+
 @onready var actionsControl: VBoxContainer = $ScrollContainer/MarginContainer/ActionsControl
 @onready var keyboardButtun: Button = $ModeControls/KeyboardButton
 @onready var gamepadButtun: Button = $ModeControls/GamePadButton
@@ -16,11 +18,12 @@ var buttons_group : ButtonGroup
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$ScrollContainer.follow_focus = true
 	load_controls()
 	controls = getControls()
 	showControls(controls, modeControl)
 
-	update_font_weight(keyboardButtun)
+	_sync_mode_buttons()
 	keyboardButtun.toggled.connect(func(_pressed): update_font_weight(keyboardButtun))
 	gamepadButtun.toggled.connect(func(_pressed): update_font_weight(gamepadButtun))
 
@@ -33,6 +36,13 @@ func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not is_visible_in_tree() or not waiting_for_input:
 		return
+
+	if event.is_action_pressed("ui_cancel") and (modeControl == "keyboard" or event is InputEventKey):
+		cancel_rebinding()
+		get_viewport().set_input_as_handled()
+		return
+	# Ne laisse pas la navigation déplacer le focus pendant une capture.
+	get_viewport().set_input_as_handled()
 
 	if modeControl == "keyboard" and not keyboardFilter(event):
 		return
@@ -54,15 +64,15 @@ func _input(event: InputEvent) -> void:
 	
 	InputMap.action_add_event(action_to_rebind, new_event)
 
-	print(new_event)
-	print(new_event.as_text())
-	print(current_button)
 	current_button.text = new_event.as_text()
 	current_button.set_meta("input_event", new_event)
 
 	save_controls()
 
 	current_button.button_pressed = false
+	current_button.grab_focus()
+	keyboardButtun.disabled = false
+	gamepadButtun.disabled = false
 	waiting_for_input = false
 	get_viewport().set_input_as_handled()
 
@@ -130,6 +140,7 @@ func showControls(arrayControls: Array, type: String) -> void:
 		actionsControl.add_child(controlContainer)
 		actionsControl.add_child(separator)
 
+	controls_rebuilt.emit()
 
 
 func start_rebinding(action: StringName, button: Button):
@@ -140,6 +151,9 @@ func start_rebinding(action: StringName, button: Button):
 	for other_button in buttons_group.get_buttons():
 		other_button.disabled = other_button != button
 
+	keyboardButtun.disabled = true
+	gamepadButtun.disabled = true
+	button.grab_focus()
 	action_to_rebind = action
 	old_event = button.get_meta("input_event") if button.has_meta("input_event") else null
 	current_button = button
@@ -149,12 +163,14 @@ func start_rebinding(action: StringName, button: Button):
 
 func _on_keyboard_button_pressed() -> void:
 	modeControl = "keyboard"
+	_sync_mode_buttons()
 	reinitialize()
 	showControls(controls, modeControl)
 
 
 func _on_game_pad_button_pressed() -> void:
-	modeControl = "gamepad"	
+	modeControl = "gamepad"
+	_sync_mode_buttons()
 	reinitialize()
 	showControls(controls, modeControl)
 
@@ -170,6 +186,7 @@ func gamepadFilter(event: InputEvent) -> bool:
 func createButton(action: String, event: InputEvent) -> Button:
 	var button = Button.new()
 
+	button.focus_mode = Control.FOCUS_ALL
 	button.toggle_mode = true
 	button.button_group = buttons_group
 
@@ -220,7 +237,12 @@ func styleInputButton(button: Button) -> void:
 	button.add_theme_color_override("font_hover_pressed_color", Color.WHITE)
 	button.add_theme_color_override("font_disabled_color", Color("#78868C"))
 
-	button.add_theme_stylebox_override("focus", StyleBoxEmpty.new())
+	var focus := StyleBoxFlat.new()
+	focus.bg_color = Color(0, 0, 0, 0)
+	focus.border_color = Color("#70EFFF")
+	focus.set_border_width_all(2)
+	focus.set_corner_radius_all(8)
+	button.add_theme_stylebox_override("focus", focus)
 
 
 func is_valid_input(event: InputEvent) -> bool:
@@ -302,6 +324,8 @@ func load_controls() -> void:
 
 
 func cancel_rebinding() -> void:
+	keyboardButtun.disabled = false
+	gamepadButtun.disabled = false
 	if waiting_for_input and is_instance_valid(current_button):
 		current_button.text = old_event.as_text() if old_event != null else "[vide]"
 		current_button.button_pressed = false
@@ -312,3 +336,23 @@ func cancel_rebinding() -> void:
 	if buttons_group != null:
 		for button in buttons_group.get_buttons():
 			button.disabled = false
+
+
+func _sync_mode_buttons() -> void:
+	keyboardButtun.set_pressed_no_signal(modeControl == "keyboard")
+	gamepadButtun.set_pressed_no_signal(modeControl == "gamepad")
+	update_font_weight(keyboardButtun)
+	update_font_weight(gamepadButtun)
+
+
+func get_binding_rows() -> Array:
+	var rows: Array = []
+	for row in actionsControl.get_children():
+		if row is HBoxContainer:
+			var buttons: Array = []
+			for child in row.get_child(1).get_children():
+				if child is Button:
+					buttons.append(child)
+			if not buttons.is_empty():
+				rows.append(buttons)
+	return rows
